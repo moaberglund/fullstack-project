@@ -1,0 +1,84 @@
+<mxfile host="65bd71144e">
+    <diagram id="jQa5WOLKXKOrV1zaRP4V" name="Page-1">
+        <mxGraphModel dx="577" dy="907" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Home&lt;br&gt;Log in" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="440" width="100" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" style="edgeStyle=none;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="5" target="2">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="420" y="510" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5" value="Inventory" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="510" width="100" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="search bar" style="shape=rhombus;html=1;dashed=0;whitespace=wrap;perimeter=rhombusPerimeter;" vertex="1" parent="1">
+                    <mxGeometry x="375" y="580" width="90" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Wine" style="html=1;dashed=0;whitespace=wrap;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="650" width="100" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Beer" style="html=1;dashed=0;whitespace=wrap;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="650" width="100" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="Spirit" style="html=1;dashed=0;whitespace=wrap;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="650" width="100" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="Cider and Mix" style="html=1;dashed=0;whitespace=wrap;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="650" width="100" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="Alcohol free" style="html=1;dashed=0;whitespace=wrap;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="610" y="650" width="100" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Red" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="140" y="720" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="White" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="140" y="760" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="Glüwein" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="140" y="800" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="Ale" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="720" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="IPA" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="760" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="Porter" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="800" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="Bitter" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="385" y="720" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="Tequila" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="385" y="760" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="Vodka" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="385" y="800" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="Dry" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="500" y="720" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="Sweet" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="500" y="760" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="Mix" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="500" y="800" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="Beer" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="620" y="720" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="Wine" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="620" y="760" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="Gin" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="620" y="800" width="80" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
