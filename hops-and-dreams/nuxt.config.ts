@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['nuxt-mongoose'],
   mongoose: {
-    uri: 'process.env.MONGODB_URI',
+    uri: process.env.MONGODB_URI,
     options: {},
     modelsDir: 'models',
     devtools: true,
