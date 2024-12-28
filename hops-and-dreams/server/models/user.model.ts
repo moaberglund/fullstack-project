@@ -1,6 +1,6 @@
 import { defineMongooseModel } from '#nuxt/mongoose'
 
-export const User = defineMongooseModel('User', {
+export const UserSchema = defineMongooseModel('User', {
     fullname: {
         type: String,
         required: true,

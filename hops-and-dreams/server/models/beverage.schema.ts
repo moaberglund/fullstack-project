@@ -1,6 +1,6 @@
 import { defineMongooseModel } from '#nuxt/mongoose'
 
-export const Beverage = defineMongooseModel('Beverage', {
+export const BeverageSchema = defineMongooseModel('Beverage', {
     category: {
         type: String,
         required: true,
