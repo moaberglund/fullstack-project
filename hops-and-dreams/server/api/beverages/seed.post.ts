@@ -1,4 +1,4 @@
-import { BeverageSchema } from '~/server/models/beverage.schema';
+import { BeverageSchema } from "../../models/beverage.schema";
 
 export default defineEventHandler(async () => {
     const seedData = [
