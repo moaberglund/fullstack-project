@@ -8,7 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "seed": "ts-node server/api/beverages/seed.post.ts"
+    "seed": ""
   },
   "dependencies": {
     "@types/node": "^22.10.2",
