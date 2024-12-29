@@ -1,7 +1,12 @@
 export default defineEventHandler(async (event) => {
     const body = await readBody(event)
     try {
-        return await new BeverageSchema(body).save()
+        const savedBeverage = await new BeverageSchema(body).save();
+        return {
+            statusCode: 201, // Created
+            statusMessage: 'Beverage created successfully',
+            data: savedBeverage,
+        };
     }
     catch (error) {
         return error
