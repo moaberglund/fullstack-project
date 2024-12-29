@@ -1,4 +1,3 @@
-// server/api/beverages/seed.post.ts
 import { BeverageSchema } from '~/server/models/beverage.schema';
 
 export default defineEventHandler(async () => {
