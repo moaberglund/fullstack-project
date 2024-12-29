@@ -1,75 +1,25 @@
-# Nuxt Minimal Starter
+# Hops and Dreams - a fullstack project
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Setup
+## Backend
+Restful API with CRUD functions
 
-Make sure to install dependencies:
+### Beverage table
+#### Fetch all beverages
+GET URI/api/beverages
+#### Fetch one beverage with id
+GET URI/api/beverages/[id]
+#### Create new beverage
+POST URI/api/beverages/create
+#### Update beverage with id
+PUT URI/api/beverages/[id]
+#### Delete beverage with id
+DELETE URI/api/beverages/[id]
 
-```bash
-# npm
-npm install
+### User table
+GET URI/api/users
+GET URI/api/users/[id]
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+POST URI/api/users/create
+PUT URI/api/users/[id]
+DELETE URI/api/users/[id]
