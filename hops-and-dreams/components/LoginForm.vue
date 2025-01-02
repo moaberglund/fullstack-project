@@ -42,7 +42,6 @@ export default {
                 if (data.statusCode === 200) {
                     // Set the token in local storage
                     localStorage.setItem("authToken", data.token);
-                    alert("Login is successful");
                     this.$router.push("/");
                 } else {
                     console.log("Login failed:", data.message);
@@ -86,6 +85,13 @@ button {
     background-color: #26453E;
     color: #E4BA78;
     width: 200px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #E4BA78;
+    color: #26453E;
+    box-shadow: 1px 1px 5px black;
 }
 
 </style>

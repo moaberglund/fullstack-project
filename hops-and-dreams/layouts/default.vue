@@ -1,8 +1,9 @@
 <template>
     <div v-if="isAuthenticated">
-        <!-- You can add header footer sidebars etc. -->
+        <AppHeader />
         <NuxtPage />
         <DialogWrapper />
+        <AppFooter />
     </div>
     <div v-else>
         <p>Loading...</p>

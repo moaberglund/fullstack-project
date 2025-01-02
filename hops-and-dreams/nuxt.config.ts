@@ -4,7 +4,7 @@ plugins: ['~/plugins/fontawesome.js'],
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   devServer: {port: 8000},
-  modules: ['nuxt-mongoose'],
+  modules: ['nuxt-mongoose', '@nuxt/image'],
   mongoose: {
     uri: process.env.MONGODB_URI,
     options: {},

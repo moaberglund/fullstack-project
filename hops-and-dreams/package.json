@@ -16,6 +16,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/vue-fontawesome": "^3.0.8",
+    "@nuxt/image": "^1.8.1",
     "@types/node": "^22.10.2",
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",
