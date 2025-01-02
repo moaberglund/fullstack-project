@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { User } from '~/server/models/user.schema'; // Importera din schema-modell
 
-const JWT_SECRET = 'your_token'; // Byt ut mot din hemliga nyckel
+const JWT_SECRET = process.env.JWT_SECRET; 
 
 export default defineEventHandler(async (event) => {
     const { username, password } = await readBody(event);
