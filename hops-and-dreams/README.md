@@ -23,3 +23,7 @@ GET URI/api/users/[id]
 POST URI/api/users/create
 PUT URI/api/users/[id]
 DELETE URI/api/users/[id]
+
+## Login Auth
+
+POST URI/api/auth/login
