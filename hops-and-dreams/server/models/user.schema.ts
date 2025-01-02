@@ -1,7 +1,7 @@
 import { defineMongooseModel } from '#nuxt/mongoose';
 import bcrypt from 'bcrypt';
 
-export const User = defineMongooseModel('User', {
+export const UserSchema = defineMongooseModel('User', {
     fullname: {
         type: String,
         required: true,
@@ -39,4 +39,4 @@ export const User = defineMongooseModel('User', {
             }
         }
     });
-}); // Här stängs måsvingarna för defineMongooseModel
+}); 
