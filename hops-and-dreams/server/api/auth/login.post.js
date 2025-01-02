@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { User } from '~/server/models/user.schema'; // Importera din schema-modell
+import { UserSchema } from '~/server/models/user.schema'; // Importera din schema-modell
 
 const JWT_SECRET = process.env.JWT_SECRET; 
 
@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
 
     try {
         // Hitta användaren i databasen
-        const user = await User.findOne({ username });
+        const user = await UserSchema.findOne({ username });
 
         if (!user) {
             return { statusCode: 401, body: { success: false, message: 'Invalid username or password' } };
