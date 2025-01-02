@@ -25,5 +25,7 @@ PUT URI/api/users/[id]
 DELETE URI/api/users/[id]
 
 ## Login Auth
-
 POST URI/api/auth/login
+
+## skapa databasen med exempel
+POST URI/api/beverages/seed

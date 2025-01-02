@@ -3,7 +3,8 @@ import { BeverageSchema } from "../../models/beverage.schema";
 export default defineEventHandler(async () => {
     const seedData = [
         {
-            category: "Red Wine",
+            category: "Wine",
+            subcategory: "Red Wine",
             name: "Terre de Mistral Reserve",
             producer: "Terre",
             country: "France",
@@ -19,7 +20,8 @@ export default defineEventHandler(async () => {
             shelf_id: 2167
         },
         {
-            category: "Red Wine",
+            category: "Wine",
+            subcategory: "Red Wine",
             name: "Nor'wester Pinot Noir",
             producer: "Greystone Wines",
             country: "New Zealand",
@@ -35,7 +37,8 @@ export default defineEventHandler(async () => {
             shelf_id: 2774
         },
         {
-            category: "White Wine",
+            category: "Wine",
+            subcategory: "White Wine",
             name: "Stoneleigh Sauvignon Blanc",
             producer: "Stoneleigh",
             country: "New Zealand",
@@ -51,7 +54,8 @@ export default defineEventHandler(async () => {
             shelf_id: 6311
         },
         {
-            category: "White Wine",
+            category: "Wine",
+            subcategory: "White Wine",
             name: "Soave Classico",
             producer: "Pieropan",
             country: "Italy",
@@ -68,6 +72,7 @@ export default defineEventHandler(async () => {
         },
         {
             category: "Beer",
+            subcategory: "Ale",
             name: "Pale Ale",
             producer: "Craft Breweries",
             country: "USA",
@@ -81,8 +86,10 @@ export default defineEventHandler(async () => {
             vegan: true,
             shelf_amount: 100,
             shelf_id: 2,
-        },{
-            category: "Sour Beer",
+        },
+        {
+            category: "Beer",
+            subcategory: "Sour Beer",
             name: "Mango Mango Mango",
             producer: "Dugges Stillwater Artisanal",
             country: "Sweden",
@@ -98,7 +105,8 @@ export default defineEventHandler(async () => {
             shelf_id: 31828,
         },
         {
-            category: "Bitter",
+            category: "Spirits",
+            subcategory: "Bitter",
             name: "Mediterranean Citrus",
             producer: "Purity Spritz",
             country: "Sweden",
@@ -114,7 +122,8 @@ export default defineEventHandler(async () => {
             shelf_id: 84388,
         },
         {
-            category: "Bitter",
+            category: "Spirits",
+            subcategory: "Bitter",
             name: "Aperitivo",
             producer: "Select",
             country: "Italy",
@@ -130,7 +139,8 @@ export default defineEventHandler(async () => {
             shelf_id: 85247,
         },
         {
-            category: "Tequila",
+            category: "Spirits",
+            subcategory: "Tequila",
             name: "Silver",
             producer: "Patron",
             country: "Mexico",
@@ -146,7 +156,8 @@ export default defineEventHandler(async () => {
             shelf_id: 87094,
         },
         {
-            category: "Vodka & Unflavored Spirits",
+            category: "Spirits",
+            subcategory: "Vodka",
             name: "Koskenkorva Vodka",
             producer: "Koskenkorva",
             country: "Finland",
@@ -162,7 +173,8 @@ export default defineEventHandler(async () => {
             shelf_id: 167
         },
         {
-            category: "Vodka & Unflavored Spirits",
+            category: "Spirits",
+            subcategory: "Vodka",
             name: "Absolut Vodka",
             producer: "Absolut",
             country: "Sweden",
