@@ -1,10 +1,9 @@
 <template>
 <header>
 <h1>Inventory</h1>
-<input type="text" placeholder="Search for products">
+<input type="text" placeholder="  Search for products">
 
-<font-awesome-icon icon="magnifying-glass" style="color: #000000;" />
-
+ <FontAwesomeIcon :icon="['fas', 'magnifying-glass']" />
 
 </header>
 </template>
