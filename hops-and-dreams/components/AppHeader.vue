@@ -3,8 +3,6 @@
 <h1>Inventory</h1>
 <input type="text" placeholder="  Search for products">
 
- <FontAwesomeIcon :icon="['fas', 'magnifying-glass']" />
-
 </header>
 </template>
 
