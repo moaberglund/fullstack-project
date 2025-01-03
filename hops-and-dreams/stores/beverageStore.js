@@ -1,4 +1,3 @@
-// stores/beverageStore.js
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
@@ -22,8 +21,14 @@ export const useBeverageStore = defineStore('beverageStore', () => {
         }
     };
 
+    // Add a getter to fetch a specific beverage by its ID
+    const getBeverageById = (id) => {
+        return beverages.value.find(beverage => beverage._id === id);
+    };
+
     return {
         beverages,
-        fetchBeverages
+        fetchBeverages,
+        getBeverageById, // Make sure to return the getter
     };
 });
