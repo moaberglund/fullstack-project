@@ -19,7 +19,18 @@
               :style="{
                 width: '100px',
                 height: '100px',
-                backgroundColor: '#D9D9D9',
+                backgroundColor:
+                  category === 'Wine'
+                    ? '#f8d7da'
+                    : category === 'Beer'
+                    ? '#d4edda'
+                    : category === 'Cider'
+                    ? '#FAEDCB'
+                    : category === 'Mixed Drinks'
+                    ? '#D5C8E9'
+                    : category === 'Spirits'
+                    ? '#F8D9C4'
+                    : '#cce5ff',
               }"
             ></div>
             <!-- Länk till den dynamiska sidan med kategori -->
