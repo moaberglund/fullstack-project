@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="p-5">
         <div class="block">
             <div>
                 <Breadcrumbs />
@@ -48,5 +48,6 @@ export default {
     },
 };
 </script>
+
 
 <style scoped></style>
