@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="p-5">
         <div class="block">
             <!-- Visa dryckens information om den hittades -->
             <BeverageBubble v-if="beverage" :name="beverage.name" :producer="beverage.producer" :year="beverage.year"
@@ -43,5 +43,6 @@ export default {
     },
 };
 </script>
+
 
 <style scoped></style>
