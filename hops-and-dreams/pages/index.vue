@@ -14,6 +14,14 @@
           :key="category"
         >
           <div class="card text-center p-3 shadow-sm">
+            <div
+              class="rounded mx-auto mb-3"
+              :style="{
+                width: '100px',
+                height: '100px',
+                backgroundColor: '#D9D9D9',
+              }"
+            ></div>
             <!-- Länk till den dynamiska sidan med kategori -->
             <nuxt-link :to="`/category/${category}`">{{ category }}</nuxt-link>
           </div>
