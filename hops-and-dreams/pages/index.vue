@@ -1,29 +1,51 @@
 <template>
   <section>
     <div class="block">
-      <h1>Welcome to your Web App!</h1>
-      <button @click="logout">Logout</button>
+      <h1>
+        Welcome to your Web App!
+      </h1>
       <ul>
-        <li v-for="beverage in beverages" :key="beverage.id">{{ beverage.name }}</li>
+        <li v-for="category in uniqueCategories" :key="category">
+          {{ category }}
+        </li>
       </ul>
+      <button @click="logout">Logout
+      </button>
     </div>
   </section>
 </template>
-
 <script>
+import { useBeverageStore } from '~/stores/beverageStore';
+
 export default {
-  async setup() {
-    const { data: beverages } = await useFetch('/api/beverages');
-    return { beverages };
+  setup() {
+    const beverageStore = useBeverageStore();
+
+    // Fetch beverages on component mount
+    beverageStore.fetchBeverages();
+
+    // Compute unique categories
+    const uniqueCategories = computed(() => {
+      const categories = beverageStore.beverages.map((beverage) => beverage.category);
+      return [...new Set(categories)];
+    });
+
+    return {
+      uniqueCategories,
+    };
   },
+
+
   methods: {
     logout() {
+      // Remove the auth token from localStorage
       localStorage.removeItem("authToken");
+      // Redirect the user to the login page
       this.$router.push("/login");
     },
   },
-}
+};
 </script>
 
-
-<style scoped></style>
+<style scoped>
+</style>
