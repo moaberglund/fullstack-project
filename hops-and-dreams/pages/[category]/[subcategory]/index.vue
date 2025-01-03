@@ -1,9 +1,10 @@
 <template>
     <section>
-        <div>
+      
+        <div class="block container">
+            <div class="p-2">
             <Breadcrumbs />
         </div>
-        <div class="block container">
             <div class="row">
 
             </div>
