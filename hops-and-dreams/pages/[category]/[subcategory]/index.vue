@@ -73,4 +73,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+section {
+  height: 79vh;
+}
+</style>
