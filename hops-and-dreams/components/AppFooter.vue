@@ -3,8 +3,8 @@
     <div
       class="container d-flex justify-content-between align-items-center py-2"
     >
-      <button @click="home" id="btn-home" class="btn btn-primary">Home</button>
-      <button @click="back" id="btn-back" class="btn btn-secondary">
+      <button @click="home" id="btn-home" class="btn btn-primary m-3">Home</button>
+      <button @click="back" id="btn-back" class="btn btn-secondary m-3">
         Back
       </button>
     </div>
@@ -42,7 +42,7 @@ export default {
 
 <style scoped>
 footer {
-  height: 80px;
+  height: 90px;
   background-color: #ececec;
   border-radius: 25px 25px 0 0;
 }
