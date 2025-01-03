@@ -7,7 +7,7 @@
       <ul>
         <li v-for="category in uniqueCategories" :key="category">
           <!-- Länk till den dynamiska sidan med kategori -->
-          <nuxt-link :to="`/category/${category}`">{{ category }}</nuxt-link>
+          <nuxt-link :to="`/${category}`">{{ category }}</nuxt-link>
         </li>
       </ul>
       <button @click="logout">Logout</button>

@@ -1,10 +1,10 @@
 <template>
     <section>
         <div class="block">
-            <h1>{{ category }} Category</h1>
+            <h1>{{ category }} - {{ subcategory }} Subcategory</h1>
             <ul>
                 <li v-for="beverage in filteredBeverages" :key="beverage.id">
-                    {{ beverage.subcategory }}
+                    {{ beverage.name }}
                 </li>
             </ul>
         </div>
@@ -18,16 +18,20 @@ import { useBeverageStore } from '~/stores/beverageStore';
 export default {
     setup() {
         const route = useRoute();
-        const category = route.params.category; // Dynamisk parameter
+        const category = route.params.category;
+        const subcategory = route.params.subcategory;
         const beverageStore = useBeverageStore();
 
-        // Filtrera drycker baserat på kategori
+        // Filtrera drycker baserat på kategori och subkategori
         const filteredBeverages = computed(() => {
-            return beverageStore.beverages.filter(beverage => beverage.category === category);
+            return beverageStore.beverages.filter(beverage =>
+                beverage.category === category && beverage.subcategory === subcategory
+            );
         });
 
         return {
             category,
+            subcategory,
             filteredBeverages,
         };
     },
