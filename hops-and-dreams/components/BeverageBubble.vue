@@ -8,7 +8,7 @@
       <h2 class="h6 text-muted">{{ producer }}, {{ year }}</h2>
 
       <h3 class="h6 text-muted">{{ country }}, {{ region }}</h3>
-      <h3 class="h6 text-muted">{{ volume }} - {{ alcohol_by_volume }}</h3>
+      <h3 class="h6 text-muted">{{ volume }} ml - {{ alcohol_by_volume }}% vol.</h3>
 
       <p class="price h4">&euro;{{ price }}</p>
 
