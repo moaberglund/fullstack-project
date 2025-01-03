@@ -3,8 +3,12 @@
         <div class="block">
             <h1>{{ category }} - {{ subcategory }} Subcategory</h1>
             <ul>
-                <li v-for="beverage in filteredBeverages" :key="beverage.id">
-                    {{ beverage.name }}
+                <li v-for="beverage in filteredBeverages" :key="beverage._id">
+                    <!-- Länk till detaljerad sida för varje dryck -->
+                    <nuxt-link :to="`/${category}/${subcategory}/${beverage._id}`">
+    {{ beverage.name }}
+</nuxt-link>
+
                 </li>
             </ul>
         </div>
