@@ -1,6 +1,9 @@
 <template>
     <section class="p-5">
         <div class="block">
+            <div>
+                <Breadcrumbs />
+            </div>
             <!-- Visa dryckens information om den hittades -->
             <BeverageBubble v-if="beverage" :name="beverage.name" :producer="beverage.producer" :year="beverage.year"
                 :country="beverage.country" :region="beverage.region" :volume="beverage.volume"
@@ -17,8 +20,10 @@ import { useRoute } from "vue-router";
 import { useBeverageStore } from "~/stores/beverageStore";
 import BeverageBubble from "~/components/BeverageBubble.vue";
 import { computed, onMounted } from "vue";
+import Breadcrumbs from "~/components/Breadcrumbs.vue";
 
 export default {
+    components: { Breadcrumbs },
     components: { BeverageBubble },
     setup() {
         const route = useRoute();

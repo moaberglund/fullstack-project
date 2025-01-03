@@ -1,54 +1,50 @@
 <template>
- <section>
-    <div class="block container">
-      <div class="row">
-        <div class="col-12 text-center mb-4">
-          <h1>{{ category }} - {{ subcategory }} Subcategory</h1>
+    <section>
+        <div>
+            <Breadcrumbs />
         </div>
-      </div>
+        <div class="block container">
+            <div class="row">
 
-      <div class="row">
-        <div
-          class="col-12 col-md-4 col-lg-3 mb-3"
-          v-for="beverage in filteredBeverages"
-          :key="beverage._id"
-        >
-          <div class="card text-center p-3 shadow-sm">
-            <div
-              class="rounded mx-auto mb-3"
-              :style="{
-                width: '100px',
-                height: '100px',
-                backgroundColor:
-                  beverage.category === 'Wine'
-                    ? '#f8d7da'
-                    : beverage.category === 'Beer'
-                    ? '#d4edda'
-                    : beverage.category === 'Cider'
-                    ? '#FAEDCB'
-                    : beverage.category === 'Mixed Drinks'
-                    ? '#D5C8E9'
-                    : beverage.category === 'Spirits'
-                    ? '#F8D9C4'
-                    : '#cce5ff',
-              }"
-            ></div>
-            <!-- Länk till den detaljerade sidan för drycken -->
-            <nuxt-link :to="`/${category}/${subcategory}/${beverage._id}`">
-              {{ beverage.name }}
-            </nuxt-link>
-          </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-3 mb-3" v-for="beverage in filteredBeverages" :key="beverage._id">
+                    <div class="card text-center p-3 shadow-sm">
+                        <div class="rounded mx-auto mb-3" :style="{
+                            width: '100px',
+                            height: '100px',
+                            backgroundColor:
+                                beverage.category === 'Wine'
+                                    ? '#f8d7da'
+                                    : beverage.category === 'Beer'
+                                        ? '#d4edda'
+                                        : beverage.category === 'Cider'
+                                            ? '#FAEDCB'
+                                            : beverage.category === 'Mixed Drinks'
+                                                ? '#D5C8E9'
+                                                : beverage.category === 'Spirits'
+                                                    ? '#F8D9C4'
+                                                    : '#cce5ff',
+                        }"></div>
+                        <!-- Länk till den detaljerade sidan för drycken -->
+                        <nuxt-link :to="`/${category}/${subcategory}/${beverage._id}`">
+                            {{ beverage.name }}
+                        </nuxt-link>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 </template>
 
 <script>
 import { useRoute } from 'vue-router';
 import { useBeverageStore } from '~/stores/beverageStore';
+import Breadcrumbs from "~/components/Breadcrumbs.vue";
 
 export default {
+    components: { Breadcrumbs },
     setup() {
         const route = useRoute();
         const category = route.params.category;
