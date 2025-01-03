@@ -1,5 +1,5 @@
 <template>
-  <div class="card beverage-bubble mx-auto p-3">
+  <div class="card beverage-bubble mx-auto p-3 mt-3 mb-5">
     <div class="beverage-img bg-light rounded"></div>
 
     <div class="card-body beverage-text">
