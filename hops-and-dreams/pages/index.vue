@@ -1,9 +1,11 @@
 <template>
   <section>
-    <div class="block">
-      <h1>
-        Welcome to your Web App!
-      </h1>
+    <div class="block container">
+      <div class="row">
+        <div class="col-12 text-center mb-4">
+          <h1>Welcome to your Web App!</h1>
+        </div>
+      </div>
       <ul>
         <li v-for="category in uniqueCategories" :key="category">
           <!-- Länk till den dynamiska sidan med kategori -->
@@ -17,8 +19,8 @@
 
 
 <script>
-import { useBeverageStore } from '~/stores/beverageStore';
-import { onMounted, computed } from 'vue';
+import { useBeverageStore } from "~/stores/beverageStore";
+import { onMounted, computed } from "vue";
 
 export default {
   setup() {
@@ -33,7 +35,9 @@ export default {
 
     // Compute unique categories
     const uniqueCategories = computed(() => {
-      const categories = beverageStore.beverages.map(beverage => beverage.category);
+      const categories = beverageStore.beverages.map(
+        (beverage) => beverage.category
+      );
       return [...new Set(categories)];
     });
 
