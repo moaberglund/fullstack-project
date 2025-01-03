@@ -1,7 +1,9 @@
 <template>
   <header>
-    <h1>Inventory</h1>
-    <input type="text" placeholder="  Search for products" />
+    <div class="container">
+      <h1>Inventory</h1>
+      <input type="text" placeholder="  Search for products" />
+    </div>
   </header>
 </template>
 
