@@ -1,16 +1,20 @@
 <template>
   <section>
     <div class="block">
-      <h1>Welcome to your Web App!</h1>
+      <h1>
+        Welcome to your Web App!
+      </h1>
       <ul>
         <li v-for="category in uniqueCategories" :key="category">
-          {{ category }}
+          <!-- Länk till den dynamiska sidan med kategori -->
+          <nuxt-link :to="`/category/${category}`">{{ category }}</nuxt-link>
         </li>
       </ul>
       <button @click="logout">Logout</button>
     </div>
   </section>
 </template>
+
 
 <script>
 import { useBeverageStore } from '~/stores/beverageStore';
