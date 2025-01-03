@@ -24,6 +24,7 @@
         <p>{{ amount }}</p>
         <button>+</button>
       </div>
+
     </div>
   </div>
 </template>
@@ -97,5 +98,6 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 }
 </style>
