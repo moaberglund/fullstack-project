@@ -1,15 +1,32 @@
 <template>
   <section>
-    <div class="block">
-      <h1>
-        Welcome to your Web App!
-      </h1>
-      <ul>
-        <li v-for="category in uniqueCategories" :key="category">
-          <!-- Länk till den dynamiska sidan med kategori -->
-          <nuxt-link :to="`/category/${category}`">{{ category }}</nuxt-link>
-        </li>
-      </ul>
+    <div class="block container">
+      <div class="row">
+        <div class="col-12 text-center mb-4">
+          <h1>Welcome to your Web App!</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div
+          class="col-12 col-md-4 col-lg-3 mb-3"
+          v-for="category in uniqueCategories"
+          :key="category"
+        >
+          <div class="card text-center p-3 shadow-sm">
+            <div
+              class="rounded mx-auto mb-3"
+              :style="{
+                width: '100px',
+                height: '100px',
+                backgroundColor: '#D9D9D9',
+              }"
+            ></div>
+            <!-- Länk till den dynamiska sidan med kategori -->
+            <nuxt-link :to="`/category/${category}`">{{ category }}</nuxt-link>
+          </div>
+        </div>
+      </div>
       <button @click="logout">Logout</button>
     </div>
   </section>
