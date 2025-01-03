@@ -13,7 +13,7 @@
         :price="beverage.price"
         :description="beverage.description"
         :shelf_id="beverage.shelf_id"
-        :amount="beverage.amount"
+        :amount="beverage.shelf_amount"
       />
     </div>
   </section>
