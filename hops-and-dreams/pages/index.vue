@@ -7,7 +7,7 @@
       <ul>
         <li v-for="category in uniqueCategories" :key="category">
           <!-- Länk till den dynamiska sidan med kategori -->
-          <nuxt-link :to="`/${category}`">{{ category }}</nuxt-link>
+          <nuxt-link :to="`/category/${category}`">{{ category }}</nuxt-link>
         </li>
       </ul>
       <button @click="logout">Logout</button>
@@ -17,8 +17,8 @@
 
 
 <script>
-import { useBeverageStore } from '~/stores/beverageStore';
-import { onMounted, computed } from 'vue';
+import { useBeverageStore } from "~/stores/beverageStore";
+import { onMounted, computed } from "vue";
 
 export default {
   setup() {
@@ -33,7 +33,9 @@ export default {
 
     // Compute unique categories
     const uniqueCategories = computed(() => {
-      const categories = beverageStore.beverages.map(beverage => beverage.category);
+      const categories = beverageStore.beverages.map(
+        (beverage) => beverage.category
+      );
       return [...new Set(categories)];
     });
 

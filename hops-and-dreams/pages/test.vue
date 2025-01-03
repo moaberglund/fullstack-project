@@ -9,7 +9,7 @@
 
   </div>
 
-  <div>
+  <div class="flex-container">
 
     <BeverageBubble
       name="Chardonnay"
