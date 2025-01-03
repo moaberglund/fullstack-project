@@ -2,9 +2,6 @@
   <section>
     <div class="block container">
       <div class="row">
-        <div class="col-12 text-center mb-4">
-          <h1>Welcome to your Web App!</h1>
-        </div>
       </div>
 
       <div class="row">

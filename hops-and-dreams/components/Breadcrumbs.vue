@@ -1,16 +1,17 @@
 <template>
-    <nav class="breadcrumbs">
-        <ul>
-            <li v-for="(breadcrumb, index) in breadcrumbs" :key="index">
-                <nuxt-link
-                    v-if="index !== breadcrumbs.length - 1"
-                    :to="breadcrumb.path"
-                >
-                    {{ breadcrumb.name }}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li v-for="(crumb, index) in breadcrumbs" :key="index" class="breadcrumb-item">
+                <!-- Om det är den sista breadcrumb, visa bara namnet -->
+                <span v-if="index === breadcrumbs.length - 1">
+                    {{ crumb.name }}
+                </span>
+                <!-- Annars gör den till en länk -->
+                <nuxt-link v-else :to="crumb.link">
+                    {{ crumb.name }}
                 </nuxt-link>
-                <span v-else>{{ breadcrumb.name }}</span>
-            </li>
-        </ul>
+                </li>
+        </ol>
     </nav>
 </template>
 
@@ -23,54 +24,39 @@ export default {
         const route = useRoute();
         const beverageStore = useBeverageStore();
 
-        // Hämta dryckens namn baserat på ID
-        const getBeverageName = (id) => {
-            const beverage = beverageStore.beverages.find((bev) => bev._id === id);
-            return beverage ? beverage.name : id; // Visa ID som fallback om namn inte hittas
-        };
+        // Bygg breadcrumbs
+        const breadcrumbs = computed(() => {
+            const parts = route.path.split("/").filter((part) => part); // Dela upp i delar och ta bort tomma
+            const links = parts.map((_, i) => "/" + parts.slice(0, i + 1).join("/")); // Bygg dynamiska länkar
 
-        // Generera breadcrumbs
-        const breadcrumbs = route.path
-            .split("/") // Dela upp URL i delar
-            .filter((part) => part) // Ta bort tomma delar
-            .map((part, index, array) => {
-                // Generera path och namn
-                const path = "/" + array.slice(0, index + 1).join("/");
-                let name = decodeURIComponent(part).replace(/%20/g, " ");
-                // Om det är sista segmentet, hämta dryckens namn
-                if (index === array.length - 1 && array.length > 2) {
-                    name = getBeverageName(part);
+            return parts.map((part, i) => {
+                // Försök hämta dryckens namn för sista delen
+                if (i === parts.length - 1) {
+                    const beverage = beverageStore.beverages.find(
+                        (b) => b._id === part
+                    );
+                    return {
+                        name: beverage ? beverage.name : part,
+                        link: links[i],
+                    };
                 }
-                return { name, path };
+                return {
+                    name: decodeURIComponent(part), // Dekoda URL-komponenter
+                    link: links[i],
+                };
             });
+        });
 
-        return { breadcrumbs };
+        return {
+            breadcrumbs,
+        };
     },
 };
 </script>
 
 <style scoped>
-.breadcrumbs ul {
-    display: flex;
-    list-style: none;
-    gap: 0.5rem;
-    padding: 0;
-    margin: 0;
-}
-
-.breadcrumbs li {
-    font-size: 0.9rem;
-}
-
-.breadcrumbs a {
-    text-decoration: none;
-    color: #007bff;
-}
-
-.breadcrumbs a.current,
-.breadcrumbs span {
-    color: #000; /* Gör nuvarande sida svart */
-    font-weight: bold;
-    pointer-events: none;
+.breadcrumb-item i {
+    color: #6c757d;
+    /* Anpassa färg om nödvändigt */
 }
 </style>
