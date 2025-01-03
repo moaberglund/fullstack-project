@@ -23,7 +23,7 @@
               }"
             ></div>
             <!-- Länk till den dynamiska sidan med kategori -->
-            <nuxt-link :to="`/category/${category}`">{{ category }}</nuxt-link>
+            <nuxt-link :to="`/${category}`">{{ category }}</nuxt-link>
           </div>
         </div>
       </div>
