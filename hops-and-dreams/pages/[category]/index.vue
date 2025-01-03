@@ -10,6 +10,7 @@
                     <nuxt-link :to="`/${category}/${subcategory}`">{{ subcategory }}</nuxt-link>
                 </li>
             </ul>
+
         </div>
     </section>
 </template>
@@ -21,7 +22,7 @@ import { useBeverageStore } from '~/stores/beverageStore';
 export default {
     setup() {
         const route = useRoute();
-        const category = route.params.category;
+        const category = route.params.category; // Hämta den dynamiska kategoriparametern
         const beverageStore = useBeverageStore();
 
         // Filtrera drycker baserat på kategori
