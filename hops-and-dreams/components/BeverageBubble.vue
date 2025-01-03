@@ -1,6 +1,6 @@
 <template>
   <div class="card beverage-bubble mx-auto p-3">
-    <div class="beverage-img bg-danger rounded"></div>
+    <div class="beverage-img bg-light rounded"></div>
 
     <div class="card-body beverage-text">
       <h1 class="card-title h4">{{ name }}</h1>
