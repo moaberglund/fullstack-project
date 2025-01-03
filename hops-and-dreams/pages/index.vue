@@ -6,12 +6,19 @@
           <h1>Welcome to your Web App!</h1>
         </div>
       </div>
-      <ul>
-        <li v-for="category in uniqueCategories" :key="category">
-          <!-- Länk till den dynamiska sidan med kategori -->
-          <nuxt-link :to="`/category/${category}`">{{ category }}</nuxt-link>
-        </li>
-      </ul>
+
+      <div class="row">
+        <div
+          class="col-12 col-md-4 col-lg-3 mb-3"
+          v-for="category in uniqueCategories"
+          :key="category"
+        >
+          <div class="card text-center p-3 shadow-sm">
+            <!-- Länk till den dynamiska sidan med kategori -->
+            <nuxt-link :to="`/category/${category}`">{{ category }}</nuxt-link>
+          </div>
+        </div>
+      </div>
       <button @click="logout">Logout</button>
     </div>
   </section>
