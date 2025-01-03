@@ -1,33 +1,33 @@
 <template>
-  <div class="beverage-bubble">
-    <div class="beverage-img"></div>
+  <div class="card beverage-bubble text-center mx-auto p-3">
+    <div class="beverage-img bg-danger rounded"></div>
 
-    <div class="beverage-text">
-      <h1>{{ name }}</h1>
+    <div class="card-body beverage-text">
+      <h1 class="card-title h4">{{ name }}</h1>
 
-      <!-- if vegan + organic ? -->
+      <h2 class="h6 text-muted">{{ producer }}, {{ year }}</h2>
 
-      <h2>{{ producer }}, {{ year }}</h2>
+      <h3 class="h6 text-muted">{{ country }}, {{ region }}</h3>
+      <h3 class="h6 text-muted">{{ volume }} - {{ alcohol_by_volume }}</h3>
 
-      <h3>{{ country }}, {{ region }}</h3>
-      <h3>{{ volume }} - {{ alcohol_by_volume }}</h3>
+      <p class="price h4 text-primary">&euro;{{ price }}</p>
 
-      <p class="price">&euro;{{ price }}</p>
+      <p class="description text-muted">{{ description }}</p>
 
-      <p class="description">{{ description }}</p>
+      <p class="shelf text-muted">Shelf: {{ shelf_id }}</p>
 
-      <p class="shelf">Shelf: {{ shelf_id }}</p>
-
-      <p>Amount:</p>
-      <div class="amount">
-        <button>-</button>
-        <p>{{ amount }}</p>
-        <button>+</button>
+      <div class="d-flex align-items-center justify-content-center gap-3">
+        <p class="m-0">Amount:</p>
+        <div class="input-group amount">
+          <button class="btn btn-outline-secondary">-</button>
+          <p class="m-0 px-3">{{ amount }}</p>
+          <button class="btn btn-outline-secondary">+</button>
+        </div>
       </div>
-
     </div>
   </div>
 </template>
+  
 
 <script>
 export default {
@@ -50,54 +50,12 @@ export default {
 
 <style scoped>
 .beverage-bubble {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 350px;
-  height: 600px;
-  background-color: #f0f0f0;
-  border-radius: 25px;
-  margin: 20px;
+  height: auto;
 }
 
 .beverage-img {
   width: 100%;
   height: 280px;
-  background-color: #c06363;
-  border-radius: 20px;
-}
-
-h1 {
-  font-size: 20px;
-}
-h2 {
-  font-size: 16px;
-  color: #5a5a5a;
-}
-h3 {
-  font-size: 12px;
-  color: #5a5a5a;
-}
-.price {
-  font-size: 20px;
-}
-.description {
-  font-size: 14px;
-  color: #5a5a5a;
-}
-.shelf {
-  font-size: 12px;
-  color: #5a5a5a;
-}
-.amount {
-  font-size: 20px;
-  background-color: #d9d9d9;
-  width: 150px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
 }
 </style>
