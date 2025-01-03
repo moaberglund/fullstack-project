@@ -2,7 +2,7 @@
 
     <div class="menu-bubble">
 
-        <div class="category-img"></div>
+        <div class="category-img" :style="{ backgroundColor: color }"></div>
         <div class="category-name">
             <h2>{{  category }}</h2>
         </div>
@@ -17,7 +17,11 @@
 export default {
     name: 'MenuBubble',
     props: {
-        category: String
+        category: String,
+        color: {
+            type: String,
+            default: '#c06363' // Standardfärg om ingen färg skickas in
+        }
     }
 }
 
