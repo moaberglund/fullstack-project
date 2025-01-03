@@ -33,7 +33,7 @@ header {
 .input-wrapper i {
   position: absolute;
   top: 50%;
-  left: 10px; 
+  left: 15px; 
   transform: translateY(-50%);
   color: #888; /* Färg på ikonen */
   pointer-events: none; 
