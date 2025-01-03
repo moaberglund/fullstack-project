@@ -1,7 +1,7 @@
 <template>
-  <footer>
-    <button @click="home" id="btn-home">Home</button>
-    <button @click="back" id="btn-back">Back</button>
+  <footer class="d-flex justify-content-between align-items-center p-2 bg-light rounded-top">
+    <button @click="home" id="btn-home" class="btn btn-primary">Home</button>
+    <button @click="back" id="btn-back" class="btn btn-secondary">Back</button>
   </footer>
 </template>
 
@@ -36,6 +36,7 @@ export default {
 
 <style scoped>
 footer {
+  height: 50px;
   background-color: #ececec;
   border-radius: 25px 25px 0 0;
 }
