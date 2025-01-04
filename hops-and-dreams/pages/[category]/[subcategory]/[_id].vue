@@ -8,6 +8,7 @@
       <!-- Visa dryckens information om den hittades -->
       <BeverageBubble
         v-if="beverage"
+        :id="beverage._id"
         :name="beverage.name"
         :producer="beverage.producer"
         :year="beverage.year"
@@ -28,29 +29,31 @@
 
 <script>
 import { useRoute } from "vue-router";
-import { useBeverageStore } from "~/stores/beverageStore";
+import { ref, computed, onMounted } from "vue";
 import BeverageBubble from "~/components/BeverageBubble.vue";
-import { computed, onMounted } from "vue";
 import Breadcrumbs from "~/components/Breadcrumbs.vue";
 
 export default {
-  components: { Breadcrumbs },
-  components: { BeverageBubble },
+  components: { Breadcrumbs, BeverageBubble },
   setup() {
     const route = useRoute();
     const id = route.params._id; // Hämta id från URL:en
-    const beverageStore = useBeverageStore();
+    const beverage = ref(null); // Skapa en reaktiv variabel för drycken
 
-    // Vänta på att dryckerna är laddade
-    onMounted(() => {
-      if (beverageStore.beverages.length === 0) {
-        beverageStore.fetchBeverages(); // Hämta drycker om de inte är laddade
+    // Funktion för att hämta drycken från servern
+    const fetchBeverage = async () => {
+      try {
+        const response = await fetch(`/api/beverages/${id}`);
+        const data = await response.json();
+        beverage.value = data; // Tilldela den hämtade drycken
+      } catch (error) {
+        console.error("Error fetching beverage:", error);
       }
-    });
+    };
 
-    // Hämta drycken baserat på id
-    const beverage = computed(() => {
-      return beverageStore.getBeverageById(id); // Använd getter från store för att hämta drycken
+    // Hämta drycken när komponenten mountas
+    onMounted(() => {
+      fetchBeverage();
     });
 
     return {
@@ -59,6 +62,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 section {
   height: 79vh;

@@ -19,20 +19,20 @@
       <div class="amount">
         <p class="m-0">Amount:</p>
         <div class="input-group amount">
-          <button class="btn btn-outline-secondary">-</button>
-          <p class="m-0 px-3 amount-btn">{{ amount }}</p>
-          <button class="btn btn-outline-secondary">+</button>
+          <button @click="updateAmount(-1)" class="btn btn-outline-secondary">-</button>
+          <p class="m-0 px-3 amount-btn">{{ currentAmount }}</p>
+          <button @click="updateAmount(1)" class="btn btn-outline-secondary">+</button>
         </div>
       </div>
     </div>
   </div>
 </template>
-  
 
 <script>
 export default {
   name: "BeverageBubble",
   props: {
+    id: String,
     name: String,
     producer: String,
     year: Number,
@@ -45,7 +45,41 @@ export default {
     shelf_id: Number,
     amount: Number,
   },
-};
+  data() {
+    return {
+      currentAmount: this.amount, // Hantera aktuell mängd lokalt
+    };
+  },
+  methods: {
+    async updateAmount(change) {
+      const newAmount = this.currentAmount + change;
+
+      if (newAmount < 0) {
+        alert("Amount cannot be negative!");
+        return;
+      }
+
+      try {
+        const response = await fetch(`/api/beverages/${this.id}`, {
+          method: "PUT",
+          body: JSON.stringify({ shelf_amount: newAmount }), // Skicka data som JSON
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (response.ok) {
+          // Uppdatera amount lokalt om PUT-anropet lyckas
+          this.currentAmount = newAmount;
+        } else {
+          console.error("Failed to update amount:", response.statusText);
+        }
+      } catch (error) {
+        console.error("Error updating amount:", error);
+      }
+    },
+  },
+}
 </script>
 
 <style scoped>
@@ -58,20 +92,20 @@ export default {
   width: 100%;
   height: 280px;
 }
+
 h3 {
   font-size: 12px;
 }
+
 .description {
   font-size: 12px;
 }
 
 .amount-btn {
-    padding-top: 5px;
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
-    font-size: 16px;
-    font-weight: bold;
+  padding-top: 5px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  font-size: 16px;
+  font-weight: bold;
 }
-
-
 </style>

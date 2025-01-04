@@ -40,48 +40,55 @@
   </section>
 </template>
 
-
 <script>
-import { useBeverageStore } from "~/stores/beverageStore";
-import { onMounted, computed } from "vue";
+import { onMounted, ref, computed } from "vue";
+import { useRouter } from "vue-router"; // Importera useRouter
 
 export default {
   setup() {
-    const beverageStore = useBeverageStore();
+    // Använd useRouter för navigation
+    const router = useRouter();
 
-    // Fetch beverages on component mount
-    onMounted(() => {
-      if (beverageStore.beverages.length === 0) {
-        beverageStore.fetchBeverages();
-      }
-    });
-
-    // Compute unique categories
+    // State to store beverages
+    const beverages = ref([]);
     const uniqueCategories = computed(() => {
-      const categories = beverageStore.beverages.map(
+      const categories = beverages.value.map(
         (beverage) => beverage.category
       );
       return [...new Set(categories)];
     });
 
+    // Fetch beverages from the server
+    const fetchBeverages = async () => {
+      try {
+        const response = await fetch('/api/beverages');
+        const data = await response.json();
+        beverages.value = data; // Store beverages in the reactive state
+      } catch (error) {
+        console.error("Error fetching beverages:", error);
+      }
+    };
+
+    // Fetch beverages on component mount
+    onMounted(() => {
+      fetchBeverages();
+    });
+
+    // Logout function
+    const logout = () => {
+      localStorage.removeItem("authToken"); // Ta bort authToken från localStorage
+      router.push("/login"); // Använd router.push istället för this.$router
+    };
+
     return {
       uniqueCategories,
+      logout,
     };
-  },
-
-  methods: {
-    logout() {
-      // Remove the auth token from localStorage
-      localStorage.removeItem("authToken");
-      // Redirect the user to the login page
-      this.$router.push("/login");
-    },
   },
 };
 </script>
 
 <style scoped>
-
 section {
   height: 79vh;
 }

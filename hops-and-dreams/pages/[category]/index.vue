@@ -45,7 +45,7 @@
 
 <script>
 import { useRoute } from "vue-router";
-import { useBeverageStore } from "~/stores/beverageStore";
+import { onMounted, ref, computed } from "vue";
 import Breadcrumbs from "~/components/Breadcrumbs.vue";
 
 export default {
@@ -53,21 +53,30 @@ export default {
   setup() {
     const route = useRoute();
     const category = route.params.category; // Hämta den dynamiska kategoriparametern
-    const beverageStore = useBeverageStore();
 
-    // Filtrera drycker baserat på kategori
-    const filteredBeverages = computed(() => {
-      return beverageStore.beverages.filter(
-        (beverage) => beverage.category === category
-      );
+    // State to store beverages
+    const beverages = ref([]);
+    const uniqueSubcategories = computed(() => {
+      const subcategories = beverages.value
+        .filter((beverage) => beverage.category === category)
+        .map((beverage) => beverage.subcategory);
+      return [...new Set(subcategories)];
     });
 
-    // Hämta unika subkategorier baserat på dryckerna i den valda kategorin
-    const uniqueSubcategories = computed(() => {
-      const subcategories = filteredBeverages.value.map(
-        (beverage) => beverage.subcategory
-      );
-      return [...new Set(subcategories)];
+    // Fetch beverages from the server
+    const fetchBeverages = async () => {
+      try {
+        const response = await fetch('/api/beverages');
+        const data = await response.json();
+        beverages.value = data; // Store beverages in the reactive state
+      } catch (error) {
+        console.error("Error fetching beverages:", error);
+      }
+    };
+
+    // Fetch beverages on component mount
+    onMounted(() => {
+      fetchBeverages();
     });
 
     return {

@@ -17,12 +17,28 @@
 
 <script>
 import { useRoute } from "vue-router";
-import { useBeverageStore } from "~/stores/beverageStore";
+import { ref, computed, onMounted } from "vue";
 
 export default {
     setup() {
         const route = useRoute();
-        const beverageStore = useBeverageStore();
+        const beverages = ref([]);
+        
+        // Funktion för att hämta drycker från servern
+        const fetchBeverages = async () => {
+            try {
+                const response = await fetch('/api/beverages');
+                const data = await response.json();
+                beverages.value = data;
+            } catch (error) {
+                console.error("Error fetching beverages:", error);
+            }
+        };
+
+        // Hämta drycker när komponenten mountas
+        onMounted(() => {
+            fetchBeverages();
+        });
 
         // Bygg breadcrumbs
         const breadcrumbs = computed(() => {
@@ -32,11 +48,10 @@ export default {
             // Bygg dynamiska crumbs
             const dynamicCrumbs = parts.map((part, i) => {
                 if (i === parts.length - 1) {
-                    const beverage = beverageStore.beverages.find(
-                        (b) => b._id === part
-                    );
+                    // Här söker vi om vi har en dryck som matchar id
+                    const beverage = beverages.value.find((b) => b._id === part);
                     return {
-                        name: beverage ? beverage.name : part,
+                        name: beverage ? beverage.name : part,  // Använd dryckens namn om den finns
                         link: links[i],
                     };
                 }

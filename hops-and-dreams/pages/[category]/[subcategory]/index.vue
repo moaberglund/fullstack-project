@@ -45,7 +45,7 @@
 
 <script>
 import { useRoute } from "vue-router";
-import { useBeverageStore } from "~/stores/beverageStore";
+import { ref, computed, onMounted } from "vue";
 import Breadcrumbs from "~/components/Breadcrumbs.vue";
 
 export default {
@@ -54,11 +54,27 @@ export default {
     const route = useRoute();
     const category = route.params.category;
     const subcategory = route.params.subcategory;
-    const beverageStore = useBeverageStore();
+    const beverages = ref([]);
+
+    // Funktion för att hämta drycker från servern
+    const fetchBeverages = async () => {
+      try {
+        const response = await fetch("/api/beverages");
+        const data = await response.json();
+        beverages.value = data;
+      } catch (error) {
+        console.error("Error fetching beverages:", error);
+      }
+    };
+
+    // Hämta drycker när komponenten mountas
+    onMounted(() => {
+      fetchBeverages();
+    });
 
     // Filtrera drycker baserat på kategori och subkategori
     const filteredBeverages = computed(() => {
-      return beverageStore.beverages.filter(
+      return beverages.value.filter(
         (beverage) =>
           beverage.category === category && beverage.subcategory === subcategory
       );
