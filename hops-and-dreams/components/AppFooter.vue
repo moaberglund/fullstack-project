@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-light rounded-top">
+  <footer class="bg-light rounded-top mt-auto">
     <div
       class="container d-flex justify-content-between align-items-center py-2"
     >
@@ -45,7 +45,6 @@ export default {
 <style scoped>
 footer {
   height: 90px;
-  background-color: #ececec;
   border-radius: 25px 25px 0 0;
 }
 

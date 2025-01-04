@@ -33,7 +33,10 @@
               }"
             ></div>
             <!-- Länk till den detaljerade sidan för drycken -->
-            <nuxt-link class="linkColor" :to="`/${category}/${subcategory}/${beverage._id}`">
+            <nuxt-link
+              class="linkColor"
+              :to="`/${category}/${subcategory}/${beverage._id}`"
+            >
               {{ beverage.name }}
             </nuxt-link>
           </div>
@@ -90,19 +93,8 @@ export default {
 </script>
 
 <style scoped>
-section {
-  min-height: 77vh;
-}
-
 .linkColor {
-  color: #26453E;
+  color: #26453e;
   text-decoration: none;
-}
-
-@media screen and (max-width: 576px) {
-section {
-  min-height: 69vh;
-}
-  
 }
 </style>

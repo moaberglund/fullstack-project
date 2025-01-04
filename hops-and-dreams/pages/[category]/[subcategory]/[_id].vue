@@ -64,14 +64,4 @@ export default {
 </script>
 
 <style scoped>
-section {
-  min-height: 77vh;
-}
-
-@media screen and (max-width: 576px) {
-section {
-  min-height: 69vh;
-}
-  
-}
 </style>

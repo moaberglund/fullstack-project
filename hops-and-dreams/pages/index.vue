@@ -74,19 +74,8 @@ export default {
 </script>
 
 <style scoped>
-section {
-  min-height: 77vh;
-}
-
 .linkColor {
   color: #26453E;
   text-decoration: none;
-}
-
-@media screen and (max-width: 576px) {
-section {
-  min-height: 69vh;
-}
-  
 }
 </style>

@@ -66,7 +66,7 @@ export default {
     // Fetch beverages from the server
     const fetchBeverages = async () => {
       try {
-        const response = await fetch('/api/beverages');
+        const response = await fetch("/api/beverages");
         const data = await response.json();
         beverages.value = data; // Store beverages in the reactive state
       } catch (error) {
@@ -88,19 +88,8 @@ export default {
 </script>
 
 <style scoped>
-section {
-  min-height: 77vh;
-}
-
 .linkColor {
-  color: #26453E;
+  color: #26453e;
   text-decoration: none;
-}
-
-@media screen and (max-width: 576px) {
-section {
-  min-height: 69vh;
-}
-  
 }
 </style>
