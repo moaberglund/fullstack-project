@@ -143,12 +143,12 @@ h3 {
 }
 
 #minusTen {
-  background-color: #D4EDDA;
+  background-color: #F8D9C4;
   color: black;
 }
 
 #minusOne {
-  background-color: #e3fce9;
+  background-color: #ffeee1;
   color: black;
 }
 
