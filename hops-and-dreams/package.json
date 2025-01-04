@@ -19,6 +19,7 @@
     "@nuxt/image": "^1.8.1",
     "@types/node": "^22.10.2",
     "bcrypt": "^5.1.1",
+    "bootstrap-icons": "^1.11.3",
     "dotenv": "^16.4.7",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^3.1.2",
