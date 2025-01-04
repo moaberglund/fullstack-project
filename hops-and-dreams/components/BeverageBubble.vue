@@ -19,14 +19,15 @@
       <div class="amount">
         <p class="m-0">Amount:</p>
         <div class="input-group amount">
-          <button @click="updateAmount(-10)" class="btn btn-outline-secondary">- 10</button>
 
-          <button @click="updateAmount(-1)" class="btn btn-outline-secondary px-3"> - </button>
+          <button id="minusTen" @click="updateAmount(-10)" class="btn btn-outline-secondary">- 10</button>
+
+          <button id="minusOne" @click="updateAmount(-1)" class="btn btn-outline-secondary px-3"> - </button>
 
           <p class="m-0 px-3 amount-btn">{{ currentAmount }}</p>
 
-          <button @click="updateAmount(1)" class="btn btn-outline-secondary px-3"> + </button>
-          <button @click="updateAmount(10)" class="btn btn-outline-secondary">+ 10</button>
+          <button id="plusOne" @click="updateAmount(1)" class="btn btn-outline-secondary px-3"> + </button>
+          <button id="plusTen" @click="updateAmount(10)" class="btn btn-outline-secondary">+ 10</button>
 
 
         </div>
@@ -109,10 +110,31 @@ h3 {
 }
 
 .amount-btn {
+  width: 70px;
   padding-top: 5px;
   border-bottom: 1px solid black;
   border-top: 1px solid black;
   font-size: 16px;
   font-weight: bold;
+  text-align: center;
+}
+
+#minusTen {
+  background-color: rgb(231, 231, 231);
+  color: black;;
+}
+
+#minusOne {
+  background-color: rgb(241, 241, 241);
+  color: black;
+}
+
+#plusOne {
+  background-color: rgb(241, 241, 241);
+  color: black;
+}
+#plusTen {
+  background-color: rgb(231, 231, 231);
+  color: black;
 }
 </style>
