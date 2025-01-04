@@ -1,8 +1,8 @@
 <template>
-  <header class="p-3">
+  <header class="p-2">
     <div class="container p-3">
       <div
-        class="d-flex justify-content-between align-items-center align-items-center"
+        class="d-flex justify-content-between"
       >
         <div id="left-header">
           <h1 class="darkgreen">Inventory</h1>
