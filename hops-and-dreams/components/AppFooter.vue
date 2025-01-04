@@ -49,10 +49,13 @@ footer {
 
 #btn-home {
   background-color: #26453E;
+  border: #26453E;
 }
 
 #btn-home:hover {
   background-color: #A2B72C;
+}
+#btn-back {
   border: none;
 }
 </style>
