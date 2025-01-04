@@ -46,4 +46,13 @@ footer {
   background-color: #ececec;
   border-radius: 25px 25px 0 0;
 }
+
+#btn-home {
+  background-color: #26453E;
+}
+
+#btn-home:hover {
+  background-color: #A2B72C;
+  border: none;
+}
 </style>
