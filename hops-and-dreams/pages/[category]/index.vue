@@ -8,7 +8,7 @@
 
       <div class="row">
         <div
-          class="col-12 col-md-4 col-lg-3 mb-3"
+          class="col-6 col-md-4 col-lg-3 mt-3"
           v-for="subcategory in uniqueSubcategories"
           :key="subcategory"
         >
@@ -89,11 +89,18 @@ export default {
 
 <style scoped>
 section {
-  min-height: 79vh;
+  min-height: 77vh;
 }
 
 .linkColor {
   color: #26453E;
   text-decoration: none;
+}
+
+@media screen and (max-width: 576px) {
+section {
+  min-height: 69vh;
+}
+  
 }
 </style>

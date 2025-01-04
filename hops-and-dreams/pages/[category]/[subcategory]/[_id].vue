@@ -65,6 +65,13 @@ export default {
 
 <style scoped>
 section {
-  height: 79vh;
+  min-height: 77vh;
+}
+
+@media screen and (max-width: 576px) {
+section {
+  min-height: 69vh;
+}
+  
 }
 </style>
