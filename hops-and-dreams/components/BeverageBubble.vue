@@ -3,7 +3,7 @@
     <div class="beverage-img bg-light rounded"></div>
 
     <div class="card-body beverage-text">
-      <h1 class="card-title h4">{{ name }}</h1>
+      <h1 class="productname card-title h4">{{ name }}</h1>
 
       <h2 class="h6 text-muted">{{ producer }}, {{ year }}</h2>
 
@@ -124,8 +124,16 @@ export default {
   height: 280px;
 }
 
+.productname {
+  color: #26453E;
+}
+
 h3 {
   font-size: 12px;
+}
+
+.price {
+  color: #26453E;
 }
 
 .description {
