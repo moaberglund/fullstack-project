@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
-      <button @click="logout">Logout</button>
+      <button class="btn btn-light" @click="logout">Logout</button>
     </div>
   </section>
 </template>
