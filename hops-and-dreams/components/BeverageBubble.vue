@@ -143,21 +143,21 @@ h3 {
 }
 
 #minusTen {
-  background-color: rgb(231, 231, 231);
+  background-color: #D4EDDA;
   color: black;
 }
 
 #minusOne {
-  background-color: rgb(241, 241, 241);
+  background-color: #e3fce9;
   color: black;
 }
 
 #plusOne {
-  background-color: rgb(241, 241, 241);
+  background-color: #e3fce9;
   color: black;
 }
 #plusTen {
-  background-color: rgb(231, 231, 231);
+  background-color: #D4EDDA;
   color: black;
 }
 
