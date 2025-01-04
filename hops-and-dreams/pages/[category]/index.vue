@@ -33,7 +33,7 @@
               }"
             ></div>
             <!-- Länk till subkategori-sidan -->
-            <nuxt-link :to="`/${category}/${subcategory}`">{{
+            <nuxt-link class="linkColor" :to="`/${category}/${subcategory}`">{{
               subcategory
             }}</nuxt-link>
           </div>
@@ -90,5 +90,10 @@ export default {
 <style scoped>
 section {
   height: 79vh;
+}
+
+.linkColor {
+  color: #26453E;
+  text-decoration: none;
 }
 </style>
