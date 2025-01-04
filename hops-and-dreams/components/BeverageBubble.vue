@@ -8,7 +8,9 @@
       <h2 class="h6 text-muted">{{ producer }}, {{ year }}</h2>
 
       <h3 class="h6 text-muted">{{ country }}, {{ region }}</h3>
-      <h3 class="h6 text-muted">{{ volume }} ml - {{ alcohol_by_volume }}% vol.</h3>
+      <h3 class="h6 text-muted">
+        {{ volume }} ml - {{ alcohol_by_volume }}% vol.
+      </h3>
 
       <p class="price h4">&euro;{{ price }}</p>
 
@@ -19,17 +21,38 @@
       <div class="amount">
         <p class="m-0">Amount:</p>
         <div class="input-group amount">
+          <button
+            id="minusTen"
+            @click="updateAmount(-10)"
+            class="btn btn-outline-secondary"
+          >
+            - 10
+          </button>
 
-          <button id="minusTen" @click="updateAmount(-10)" class="btn btn-outline-secondary">- 10</button>
-
-          <button id="minusOne" @click="updateAmount(-1)" class="btn btn-outline-secondary px-3"> - </button>
+          <button
+            id="minusOne"
+            @click="updateAmount(-1)"
+            class="btn btn-outline-secondary px-3"
+          >
+            -
+          </button>
 
           <p class="m-0 px-3 amount-btn">{{ currentAmount }}</p>
 
-          <button id="plusOne" @click="updateAmount(1)" class="btn btn-outline-secondary px-3"> + </button>
-          <button id="plusTen" @click="updateAmount(10)" class="btn btn-outline-secondary">+ 10</button>
-
-
+          <button
+            id="plusOne"
+            @click="updateAmount(1)"
+            class="btn btn-outline-secondary px-3"
+          >
+            +
+          </button>
+          <button
+            id="plusTen"
+            @click="updateAmount(10)"
+            class="btn btn-outline-secondary"
+          >
+            + 10
+          </button>
         </div>
       </div>
     </div>
@@ -87,7 +110,7 @@ export default {
       }
     },
   },
-}
+};
 </script>
 
 <style scoped>
@@ -121,7 +144,7 @@ h3 {
 
 #minusTen {
   background-color: rgb(231, 231, 231);
-  color: black;;
+  color: black;
 }
 
 #minusOne {
@@ -136,5 +159,18 @@ h3 {
 #plusTen {
   background-color: rgb(231, 231, 231);
   color: black;
+}
+
+#minusTen:hover {
+  background-color: rgb(211, 211, 211);
+}
+#minusOne:hover {
+  background-color: rgb(211, 211, 211);
+}
+#plusTen:hover {
+  background-color: rgb(211, 211, 211);
+}
+#plusOne:hover {
+  background-color: rgb(211, 211, 211);
 }
 </style>
