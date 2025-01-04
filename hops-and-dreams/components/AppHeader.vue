@@ -17,19 +17,20 @@
         </ul>
       </div>
     </div>
-    <i class="bi bi-box-arrow-right"  @click="logout"></i>
+    <i class="bi bi-box-arrow-right" @click="logout"></i>
   </header>
 </template>
 
 <script>
 import { ref, onMounted } from "vue";
 
-// Använd useRouter för navigation
-const router = useRouter();
 
 export default {
   name: "Header",
   setup() {
+
+    // Använd useRouter för navigation
+    const router = useRouter();
     // Sökord
     const searchQuery = ref("");
 
