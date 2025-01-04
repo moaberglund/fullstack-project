@@ -1,34 +1,54 @@
 <template>
-  <header>
-    <div class="container">
-      <h1 class="darkgreen">Inventory</h1>
-      <div class="input-wrapper">
-        <i class="bi bi-search"></i>
-        <input type="text" v-model="searchQuery" placeholder="Search for beverages" @input="handleSearch" />
-        <!-- Visa dropdownen endast om searchQuery inte är tom -->
-        <ul v-if="searchQuery && filteredBeverages.length > 0" class="dropdown-list">
-          <li v-for="(beverage, index) in filteredBeverages" :key="index">
-            <!-- Använd nuxt-link för att göra drycken klickbar och länka till rätt sida -->
-            <nuxt-link :to="`/${beverage.category}/${beverage.subcategory}/${beverage._id}`" class="dropdown-item"
-              @click="clearSearch">
-              {{ beverage.name }}
-            </nuxt-link>
-          </li>
-        </ul>
+  <header class="p-3">
+    <div class="container p-3">
+      <div
+        class="d-flex justify-content-between align-items-center align-items-center"
+      >
+        <div id="left-header">
+          <h1 class="darkgreen">Inventory</h1>
+
+          <div class="input-wrapper">
+            <i class="bi bi-search"></i>
+            <input
+              type="text"
+              v-model="searchQuery"
+              placeholder="Search for beverages"
+              @input="handleSearch"
+            />
+            <!-- Visa dropdownen endast om searchQuery inte är tom -->
+            <ul
+              v-if="searchQuery && filteredBeverages.length > 0"
+              class="dropdown-list"
+            >
+              <li v-for="(beverage, index) in filteredBeverages" :key="index">
+                <!-- Använd nuxt-link för att göra drycken klickbar och länka till rätt sida -->
+                <nuxt-link
+                  :to="`/${beverage.category}/${beverage.subcategory}/${beverage._id}`"
+                  class="dropdown-item"
+                  @click="clearSearch"
+                >
+                  {{ beverage.name }}
+                </nuxt-link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="right-header">
+          <button @click="logout" id="btn-logout" class="btn btn-secondary m-3">
+            <i class="bi bi-box-arrow-right"></i>
+          </button>
+        </div>
       </div>
     </div>
-    <i class="bi bi-box-arrow-right" @click="logout"></i>
   </header>
 </template>
 
 <script>
 import { ref, onMounted } from "vue";
 
-
 export default {
   name: "Header",
   setup() {
-
     // Använd useRouter för navigation
     const router = useRouter();
     // Sökord
@@ -45,7 +65,7 @@ export default {
       try {
         const response = await fetch("/api/beverages");
         const data = await response.json();
-        beverages.value = data;  // Sätt dryckerna till den hämtade listan
+        beverages.value = data; // Sätt dryckerna till den hämtade listan
         filteredBeverages.value = beverages.value;
       } catch (error) {
         console.error("Error fetching beverages:", error);
@@ -57,7 +77,7 @@ export default {
       if (searchQuery.value === "") {
         filteredBeverages.value = beverages.value; // Återställ till alla drycker om inget sökord
       } else {
-        filteredBeverages.value = beverages.value.filter(beverage =>
+        filteredBeverages.value = beverages.value.filter((beverage) =>
           beverage.name.toLowerCase().includes(searchQuery.value.toLowerCase())
         );
       }
@@ -94,11 +114,10 @@ export default {
 header {
   border-radius: 0 0 25px 25px;
   background-color: #fff9ef;
-  padding: 1em;
 }
 
 .darkgreen {
-  color: #26453E;
+  color: #26453e;
 }
 
 .input-wrapper {
@@ -158,5 +177,9 @@ input::placeholder {
 
 .dropdown-item:hover {
   background-color: #f0f0f0;
+}
+
+#btn-logout {
+  background-color: #f34d20;
 }
 </style>
