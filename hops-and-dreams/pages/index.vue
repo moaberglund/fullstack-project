@@ -5,37 +5,29 @@
       </div>
 
       <div class="row">
-        <div
-          class="col-12 col-md-4 col-lg-3 m-4"
-          v-for="category in uniqueCategories"
-          :key="category"
-        >
+        <div class="col-12 col-md-4 col-lg-3 m-4" v-for="category in uniqueCategories" :key="category">
           <div class="card text-center p-3 shadow-sm">
-            <div
-              class="rounded mx-auto mb-3"
-              :style="{
-                width: '100px',
-                height: '100px',
-                backgroundColor:
-                  category === 'Wine'
-                    ? '#f8d7da'
-                    : category === 'Beer'
+            <div class="rounded mx-auto mb-3" :style="{
+              width: '100px',
+              height: '100px',
+              backgroundColor:
+                category === 'Wine'
+                  ? '#f8d7da'
+                  : category === 'Beer'
                     ? '#d4edda'
                     : category === 'Cider'
-                    ? '#FAEDCB'
-                    : category === 'Mixed Drinks'
-                    ? '#D5C8E9'
-                    : category === 'Spirits'
-                    ? '#F8D9C4'
-                    : '#cce5ff',
-              }"
-            ></div>
+                      ? '#FAEDCB'
+                      : category === 'Mixed Drinks'
+                        ? '#D5C8E9'
+                        : category === 'Spirits'
+                          ? '#F8D9C4'
+                          : '#cce5ff',
+            }"></div>
             <!-- Länk till den dynamiska sidan med kategori -->
             <nuxt-link class="linkColor" :to="`/${category}`">{{ category }}</nuxt-link>
           </div>
         </div>
       </div>
-      <button @click="logout">Logout</button>
     </div>
   </section>
 </template>
@@ -74,15 +66,10 @@ export default {
       fetchBeverages();
     });
 
-    // Logout function
-    const logout = () => {
-      localStorage.removeItem("authToken"); // Ta bort authToken från localStorage
-      router.push("/login"); 
-    };
 
     return {
       uniqueCategories,
-      logout,
+
     };
   },
 };
