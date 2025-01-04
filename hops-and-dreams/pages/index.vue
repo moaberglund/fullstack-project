@@ -77,7 +77,7 @@ export default {
     // Logout function
     const logout = () => {
       localStorage.removeItem("authToken"); // Ta bort authToken från localStorage
-      router.push("/login"); // Använd router.push istället för this.$router
+      router.push("/login"); 
     };
 
     return {
