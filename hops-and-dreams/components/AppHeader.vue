@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="container">
-      <h1>Inventory</h1>
+      <h1 class="darkgreen">Inventory</h1>
       <div class="input-wrapper">
         <i class="bi bi-search"></i>
         <input
@@ -91,6 +91,9 @@ header {
   border-radius: 0 0 25px 25px;
   background-color: #fff9ef;
   padding: 1em;
+}
+.darkgreen {
+  color: #26453E;
 }
 
 .input-wrapper {
