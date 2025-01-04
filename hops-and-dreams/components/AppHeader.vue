@@ -37,19 +37,19 @@ export default {
     // Sökord
     const searchQuery = ref("");
     
-    // Listan på drycker som vi hämtar från API eller server
+    // Listan på drycker som hämtar från server
     const beverages = ref([]);
 
-    // Filterad lista baserat på sökningen
+    // Filtrerad lista baserat på sökningen
     const filteredBeverages = ref([]);
 
     // Funktion för att hämta drycker från en API eller annan datakälla
     const fetchBeverages = async () => {
       try {
-        const response = await fetch("/api/beverages");  // Ersätt med din API-sökväg
+        const response = await fetch("/api/beverages"); 
         const data = await response.json();
         beverages.value = data;  // Sätt dryckerna till den hämtade listan
-        filteredBeverages.value = beverages.value; // Initialt visa alla drycker
+        filteredBeverages.value = beverages.value;
       } catch (error) {
         console.error("Error fetching beverages:", error);
       }
@@ -68,10 +68,10 @@ export default {
 
     // Funktion för att tömma sökfältet när ett resultat klickas
     const clearSearch = () => {
-      searchQuery.value = "";  // Töm sökfältet
+      searchQuery.value = "";  
     };
 
-    // Hämta drycker när komponenten monteras
+    // Hämta drycker onMount
     onMounted(() => {
       fetchBeverages();
     });
@@ -80,7 +80,7 @@ export default {
       searchQuery,
       filteredBeverages,
       handleSearch,
-      clearSearch,  // Lägg till clearSearch till return-objektet
+      clearSearch,  
     };
   },
 };
@@ -138,7 +138,7 @@ input::placeholder {
   margin-top: 5px;
   padding: 0;
   list-style-type: none;
-  z-index: 9999; /* Hög z-index för att visa den ovanpå andra element */
+  z-index: 9999; 
 }
 
 .dropdown-item {
