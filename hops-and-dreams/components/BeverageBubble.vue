@@ -21,11 +21,11 @@
         <div class="input-group amount">
           <button @click="updateAmount(-10)" class="btn btn-outline-secondary">- 10</button>
 
-          <button @click="updateAmount(-1)" class="btn btn-outline-secondary"> - </button>
+          <button @click="updateAmount(-1)" class="btn btn-outline-secondary px-3"> - </button>
 
           <p class="m-0 px-3 amount-btn">{{ currentAmount }}</p>
 
-          <button @click="updateAmount(1)" class="btn btn-outline-secondary"> + </button>
+          <button @click="updateAmount(1)" class="btn btn-outline-secondary px-3"> + </button>
           <button @click="updateAmount(10)" class="btn btn-outline-secondary">+ 10</button>
 
 
