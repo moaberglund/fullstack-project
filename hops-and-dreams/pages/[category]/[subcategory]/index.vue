@@ -33,7 +33,7 @@
               }"
             ></div>
             <!-- Länk till den detaljerade sidan för drycken -->
-            <nuxt-link :to="`/${category}/${subcategory}/${beverage._id}`">
+            <nuxt-link class="linkColor" :to="`/${category}/${subcategory}/${beverage._id}`">
               {{ beverage.name }}
             </nuxt-link>
           </div>
@@ -92,5 +92,10 @@ export default {
 <style scoped>
 section {
   height: 79vh;
+}
+
+.linkColor {
+  color: #26453E;
+  text-decoration: none;
 }
 </style>
