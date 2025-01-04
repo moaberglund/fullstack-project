@@ -38,8 +38,6 @@ import { useRouter } from "vue-router"; // Importera useRouter
 
 export default {
   setup() {
-    // Använd useRouter för navigation
-    const router = useRouter();
 
     // State to store beverages
     const beverages = ref([]);
