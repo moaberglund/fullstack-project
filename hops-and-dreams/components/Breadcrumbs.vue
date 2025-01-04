@@ -80,4 +80,8 @@ export default {
     color: #6c757d;
     /* Anpassa färg om nödvändigt */
 }
+a {
+    color: #26453E;
+    text-decoration: none;
+}
 </style>
