@@ -10,7 +10,7 @@
                 <nuxt-link v-else :to="crumb.link">
                     {{ crumb.name }}
                 </nuxt-link>
-                </li>
+            </li>
         </ol>
     </nav>
 </template>
@@ -29,8 +29,8 @@ export default {
             const parts = route.path.split("/").filter((part) => part); // Dela upp i delar och ta bort tomma
             const links = parts.map((_, i) => "/" + parts.slice(0, i + 1).join("/")); // Bygg dynamiska länkar
 
-            return parts.map((part, i) => {
-                // Försök hämta dryckens namn för sista delen
+            // Bygg dynamiska crumbs
+            const dynamicCrumbs = parts.map((part, i) => {
                 if (i === parts.length - 1) {
                     const beverage = beverageStore.beverages.find(
                         (b) => b._id === part
@@ -45,6 +45,12 @@ export default {
                     link: links[i],
                 };
             });
+
+            // Lägg till Home som första breadcrumb
+            return [
+                { name: "Home", link: "/" },
+                ...dynamicCrumbs,
+            ];
         });
 
         return {
