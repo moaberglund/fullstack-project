@@ -4,39 +4,35 @@
       <h1 class="darkgreen">Inventory</h1>
       <div class="input-wrapper">
         <i class="bi bi-search"></i>
-        <input
-          type="text"
-          v-model="searchQuery"
-          placeholder="Search for beverages"
-          @input="handleSearch"
-        />
+        <input type="text" v-model="searchQuery" placeholder="Search for beverages" @input="handleSearch" />
         <!-- Visa dropdownen endast om searchQuery inte är tom -->
         <ul v-if="searchQuery && filteredBeverages.length > 0" class="dropdown-list">
           <li v-for="(beverage, index) in filteredBeverages" :key="index">
             <!-- Använd nuxt-link för att göra drycken klickbar och länka till rätt sida -->
-            <nuxt-link 
-              :to="`/${beverage.category}/${beverage.subcategory}/${beverage._id}`"
-              class="dropdown-item"
-              @click="clearSearch"
-            >
+            <nuxt-link :to="`/${beverage.category}/${beverage.subcategory}/${beverage._id}`" class="dropdown-item"
+              @click="clearSearch">
               {{ beverage.name }}
             </nuxt-link>
           </li>
         </ul>
       </div>
     </div>
+    <i class="bi bi-box-arrow-right"  @click="logout"></i>
   </header>
 </template>
 
 <script>
 import { ref, onMounted } from "vue";
 
+// Använd useRouter för navigation
+const router = useRouter();
+
 export default {
   name: "Header",
   setup() {
     // Sökord
     const searchQuery = ref("");
-    
+
     // Listan på drycker som hämtar från server
     const beverages = ref([]);
 
@@ -46,7 +42,7 @@ export default {
     // Funktion för att hämta drycker från en API eller annan datakälla
     const fetchBeverages = async () => {
       try {
-        const response = await fetch("/api/beverages"); 
+        const response = await fetch("/api/beverages");
         const data = await response.json();
         beverages.value = data;  // Sätt dryckerna till den hämtade listan
         filteredBeverages.value = beverages.value;
@@ -68,7 +64,7 @@ export default {
 
     // Funktion för att tömma sökfältet när ett resultat klickas
     const clearSearch = () => {
-      searchQuery.value = "";  
+      searchQuery.value = "";
     };
 
     // Hämta drycker onMount
@@ -76,11 +72,18 @@ export default {
       fetchBeverages();
     });
 
+    // Logout function
+    const logout = () => {
+      localStorage.removeItem("authToken"); // Ta bort authToken från localStorage
+      router.push("/login");
+    };
+
     return {
       searchQuery,
       filteredBeverages,
       handleSearch,
-      clearSearch,  
+      clearSearch,
+      logout,
     };
   },
 };
@@ -92,6 +95,7 @@ header {
   background-color: #fff9ef;
   padding: 1em;
 }
+
 .darkgreen {
   color: #26453E;
 }
@@ -141,7 +145,7 @@ input::placeholder {
   margin-top: 5px;
   padding: 0;
   list-style-type: none;
-  z-index: 9999; 
+  z-index: 9999;
 }
 
 .dropdown-item {
