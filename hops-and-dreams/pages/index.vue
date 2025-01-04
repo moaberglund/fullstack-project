@@ -31,7 +31,7 @@
               }"
             ></div>
             <!-- Länk till den dynamiska sidan med kategori -->
-            <nuxt-link :to="`/${category}`">{{ category }}</nuxt-link>
+            <nuxt-link class="linkColor" :to="`/${category}`">{{ category }}</nuxt-link>
           </div>
         </div>
       </div>
@@ -91,5 +91,10 @@ export default {
 <style scoped>
 section {
   height: 79vh;
+}
+
+.linkColor {
+  color: #26453E;
+  text-decoration: none;
 }
 </style>
