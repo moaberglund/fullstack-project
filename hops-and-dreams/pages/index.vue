@@ -75,7 +75,7 @@ export default {
 
 <style scoped>
 section {
-  height: 79vh;
+  min-height: 79vh;
 }
 
 .linkColor {
