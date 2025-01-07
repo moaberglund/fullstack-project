@@ -192,35 +192,109 @@ API:t använder **JWT (JSON Web Tokens)** för autentisering och middleware för
 
 ---
 
-## Front End - Projektstruktur och funktionalitet 
+# Nuxt.js Front End-delen
 
-### 1. Mappstrukturens funktionalitet
+Detta projekt är en frontend-applikation byggd med Nuxt.js som interagerar med ett backend-API för att visa och hantera information om drycker. Användare kan logga in för att få åtkomst till dryckesdata och se detaljerad information om specifika drycker. Appen är responsiv och anpassad för både mobila och stationära enheter.
 
-- **components**: Återanvändbara Vue-komponenter som används på flera sidor, t.ex. `AppHeader.vue`, `AppFooter.vue`, `beverageBubble.vue`, `certBubble.vue`, `Breadcrumbs.vue` och `LoginForm.vue`.
-- **layouts**: Standardlayouter för sidor, t.ex. `default.vue` (för alla sidor utom inloggning) och `login.vue` (för inloggningssidan).
-- **pages**: Dynamiska rutter och sidinnehåll, t.ex. sidor för login, index, dryckernas subkategorier och specifika drycker.
-- **plugins**: Vue-plugins som används globalt, t.ex. FontAwesome för ikoner.
-- **assets/css**: Anpassade CSS-filer som `main.css` och `normalize.css` för global styling och överriding av stilar.
+## 1. Mappstrukturens funktionalitet
 
-### 2. Detaljer om styling
+- **components**: Återanvändbara Vue-komponenter som används på flera sidor:
+  - `AppHeader.vue`: Innehåller en searchbar som söker på dryckesnamn och en utloggningsknapp.
+  - `AppFooter.vue`: En footer med bakåt- och hem-knapp.
+  - `beverageBubble.vue`: Visar detaljerad information om specifika drycker.
+  - `Breadcrumbs.vue`: Sköter breadcrumbs-logiken.
+  - `certBubble.vue`: Hanterar ekologiska och veganska symboler för dryckesvaror.
+  - `LoginForm.vue`: Sköter login med ett formulär.
+  
+- **layouts**: Standardlayouter för sidor:
+  - `default.vue`: Används för alla sidor utom inloggning.
+  - `login.vue`: Används för inloggningssidan.
 
-- **Bootstrap**: Projektet använder Bootstrap för grundläggande styling och layout. [Bootstrap-dokumentationen](https://getbootstrap.com) kan användas för referens och ytterligare anpassning.
-- **main.css**: Denna fil innehåller globala stilar och används för eventuella overrides eller egna stilar. Stilar är också scopade till de enskilda `.vue`-filerna när det är relevant.
+- **pages**: Dynamiska rutter och sidinnehåll:
+  - `login.vue`: Inloggningssida.
+  - `index.vue`: Huvudsida.
+  - Dryckernas subkategorier och specifika drycker.
 
-### 3. Hantering av tillstånd
+- **plugins**: Vue-plugins som används globalt:
+  - FontAwesome används för ikoner i appen.
 
-- Projektet använder Vue:s inbyggda mekanismer för tillståndshantering. Det finns för närvarande ingen användning av externa bibliotek som Pinia eller Vuex.
+- **assets/css**: Anpassade CSS-filer:
+  - `main.css`: Globala stilar.
+  - `normalize.css`: Används för att standardisera webbläsarens styling.
 
-### 4. Autentisering och middleware
+## 2. Detaljer om styling
+
+- **Bootstrap**: Projektet använder Bootstrap för grundläggande styling och layout. [Bootstrap-dokumentationen](https://getbootstrap.com) kan användas för referens.
+- **main.css**: Denna fil innehåller globala stilar och används för eventuella overrides eller egna stilar. Stilar är även scopade till de enskilda `.vue`-filerna när det är relevant.
+
+## 3. Hantering av tillstånd
+
+Projektet använder Vue:s inbyggda mekanismer för tillståndshantering. Det finns för närvarande ingen användning av externa bibliotek som Pinia eller Vuex.
+
+## 4. Autentisering och middleware
 
 - **Tokenhantering**: Efter lyckad inloggning sparas autentiseringstoken i `localStorage` för att användas vid följande API-förfrågningar.
+  
+  ```javascript
+  const data = await response.json();
+  if (data.statusCode === 200) {
+      // Sätt token i local storage
+      localStorage.setItem("authToken", data.token);
+      this.$router.push("/");
+  }
+  ```
+
 - **Middleware**: Middleware används för att skydda rutter och säkerställa att endast autentiserade användare kan få åtkomst till vissa sidor. Detta hanteras genom en `auth.js`-middleware som kontrollerar token och omdirigerar användare vid behov.
 
-### 5. Responsiv design
+## 5. Responsiv design
 
-- Projektet är designat för att vara responsivt, vilket innebär att sidorna fungerar både på mobila enheter och stationära enheter. Layouten använder sig av Bootstrap:s grid-system för att anpassa sig till olika skärmstorlekar.
+Projektet är designat för att vara responsivt, vilket innebär att sidorna fungerar både på mobila enheter och stationära enheter. Layouten använder sig av Bootstrap:s grid-system för att anpassa sig till olika skärmstorlekar.
 
-### 6. API-integration
+## 6. API-integration
 
-- **Backend-API**: Frontend-applikationen integreras med backend-API:t via `fetch`-förfrågningar för att hämta drycker och annan relevant data. API-förfrågningar görs från relevanta `.vue`-komponenter.
-- **Bas-URL**: Bas-URL för API:t och andra miljövariabler som `MONGODB_URI` och `JWT_SECRET` definieras i `.env`-filen.
+- **Backend-API**: Frontend-applikationen integreras med backend-API:t via `fetch`-förfrågningar för att hämta drycker och annan relevant data.
+  
+  ```javascript
+  const fetchBeverages = async () => {
+      try {
+        const response = await fetch("/api/beverages");
+        const data = await response.json();
+        beverages.value = data;
+      } catch (error) {
+        console.error("Error fetching beverages:", error);
+      }
+  };
+  ```
+
+
+## 7. Miljövariabler
+
+Projektet använder en `.env`-fil för att definiera miljövariablerna:
+
+- `MONGODB_URI`: URL för MongoDB-databasen.
+- `JWT_SECRET`: Hemlig nyckel för JWT-autentisering.
+
+## Installation
+
+För att installera och köra projektet lokalt:
+
+1. Klona repositoryt:
+   ```bash
+   git clone <https://github.com/moaberglund/fullstack-project/>
+   ```
+
+2. Installera beroenden:
+   ```bash
+   npm install
+   ```
+
+3. Kör utvecklingsservern:
+   ```bash
+   npm run dev
+   ```
+
+Besök `http://localhost:3000` för att se applikationen i din webbläsare.
+
+## Licens
+
+Projektet är licensierat under MIT-licensen.
