@@ -92,4 +92,81 @@ Alla lösenord lagras som hashar via **bcrypt** och autentisering hanteras med *
 
 ---
 
+### Error Responses
 
+API:t hanterar olika fel med standardiserade HTTP-statuskoder och meddelanden. Här är en översikt över möjliga svar och när de används:
+
+#### **Generella Statuskoder**
+- `200 OK`: För lyckade operationer (t.ex. hämtning, uppdatering, radering).
+- `201 Created`: För lyckad skapelse av en ny resurs.
+- `404 Not Found`: När en resurs inte kan hittas i databasen.
+- `400 Bad Request`: När inkommande data är ogiltig eller saknar nödvändiga fält.
+- `401 Unauthorized`: För felaktig inloggning eller om åtkomst nekas på grund av saknad/giltig token.
+- `500 Internal Server Error`: Vid oförutsedda serverfel.
+
+### Autentisering
+
+API:t använder **JWT (JSON Web Tokens)** för att autentisera och skydda endpoints. Endast användare med en giltig token kan få åtkomst till skyddade resurser. 
+
+#### **JWT-processen**
+1. **Login Endpoint**:  
+   Vid inloggning (`POST /api/auth/login`) genereras en JWT-token om användarens inloggningsuppgifter är korrekta.  
+   - Tokenen innehåller användarens ID, användarnamn och roll, samt är signerad med en hemlig nyckel (`JWT_SECRET`).
+   - Tokenen är giltig i 12 timmar och skickas tillbaka till klienten i svaret:  
+     '''json
+     {
+       "success": true,
+       "message": "Login successful",
+       "token": "<your-jwt-token>"
+     }
+     '''
+
+2. **Skyddade Endpoints**:  
+   För att komma åt skyddade endpoints måste klienten inkludera JWT-tokenen i `Authorization`-headern på alla förfrågningar:  
+   '''
+   Authorization: Bearer <your-jwt-token>
+   '''
+
+#### **Exempel på Skyddad Förfrågan**
+**Endpoint**: `GET /api/beverages`  
+**Header**:  
+'''http
+Authorization: Bearer <your-jwt-token>
+'''
+Om tokenen är giltig returneras data. Vid ogiltig eller saknad token returneras ett `401 Unauthorized`-svar.
+
+#### **Rollbaserad åtkomst (RBAC)**
+API:t stödjer rollbaserad åtkomstkontroll baserat på `role`-fältet i användarmodellen. Exempel på roller kan inkludera:
+- **Admin**: Full åtkomst till alla endpoints (CRUD).
+- **User**: Begränsad åtkomst, t.ex. endast läsa resurser.
+
+> Rollkontroll kan implementeras i middleware för att validera användarens behörighet baserat på `role` i tokenen.
+
+#### **Felhantering för Autentisering**
+- **Ogiltig token** (`401 Unauthorized`):  
+  Om en token är ogiltig eller har gått ut:  
+  '''json
+  {
+    "success": false,
+    "message": "Invalid or expired token"
+  }
+  '''
+
+- **Ingen token** (`401 Unauthorized`):  
+  Om en token saknas i förfrågan:  
+  '''json
+  {
+    "success": false,
+    "message": "Token is required"
+  }
+  '''
+
+---
+
+### Säkerhetsåtgärder
+- Lösenord hashas med **bcrypt** innan de sparas i databasen.
+- JWT-token signerad med en säker `JWT_SECRET`.
+- Tokenens giltighetstid är begränsad till 12 timmar.
+- Rollbaserad åtkomstkontroll möjliggör finjusterad säkerhet.
+
+---
