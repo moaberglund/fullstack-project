@@ -18,6 +18,8 @@
         :alcohol_by_volume="beverage.alcohol_by_volume"
         :price="beverage.price"
         :description="beverage.description"
+        :organic="beverage.organic"
+        :vegan="beverage.vegan"
         :shelf_id="beverage.shelf_id"
         :amount="beverage.shelf_amount"
       />
