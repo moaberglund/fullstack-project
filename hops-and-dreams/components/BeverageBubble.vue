@@ -16,6 +16,12 @@
 
       <p class="description text-muted">{{ description }}</p>
 
+      <div class="certification mb-3 d-flex">
+        <EcoCert v-if="organic" />
+        <VeganCert v-if="vegan" />
+      </div>
+
+      <!-- visa cert om det finns för drycken -->
       <p class="shelf text-muted">Shelf: {{ shelf_id }}</p>
 
       <div class="amount">
@@ -73,6 +79,8 @@ export default {
     alcohol_by_volume: Number,
     price: Number,
     description: String,
+    organic: Boolean,
+    vegan: Boolean,
     shelf_id: Number,
     amount: Number,
   },
@@ -125,7 +133,7 @@ export default {
 }
 
 .productname {
-  color: #26453E;
+  color: #26453e;
 }
 
 h3 {
@@ -133,7 +141,7 @@ h3 {
 }
 
 .price {
-  color: #26453E;
+  color: #26453e;
 }
 
 .description {
@@ -151,7 +159,7 @@ h3 {
 }
 
 #minusTen {
-  background-color: #F8D9C4;
+  background-color: #f8d9c4;
   color: black;
 }
 
@@ -165,7 +173,7 @@ h3 {
   color: black;
 }
 #plusTen {
-  background-color: #D4EDDA;
+  background-color: #d4edda;
   color: black;
 }
 
