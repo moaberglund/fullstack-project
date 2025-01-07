@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { UserSchema } from '~/server/models/user.schema'; // Importera din schema-modell
+import { UserSchema } from '~/server/models/user.schema'; // Importera schema-modell
 
 const JWT_SECRET = process.env.JWT_SECRET; 
 
