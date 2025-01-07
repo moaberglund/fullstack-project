@@ -3,11 +3,11 @@
     <div
       class="container d-flex justify-content-between align-items-center py-2"
     >
-      <button @click="home" id="btn-home" class="btn btn-primary m-3">
-        <i class="bi bi-house-door-fill"></i>
+      <button @click="home" id="btn-home" class="btn m-3">
+        <i class="bi bi-house-door-fill h1"></i>
       </button>
-      <button @click="back" id="btn-back" class="btn btn-secondary m-3">
-        <i class="bi bi-backspace-fill"></i>
+      <button @click="back" id="btn-back" class="btn m-3">
+        <i class="bi bi-backspace-fill h1"></i>
       </button>
     </div>
   </footer>
@@ -47,14 +47,8 @@ footer {
   height: 90px;
   border-radius: 25px 25px 0 0;
 }
-
 #btn-home {
-  background-color: #26453e;
-  border: #26453e;
-}
-
-#btn-home:hover {
-  background-color: #a2b72c;
+  border: none;
 }
 #btn-back {
   border: none;

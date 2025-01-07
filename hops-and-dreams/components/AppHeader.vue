@@ -1,9 +1,7 @@
 <template>
   <header class="p-2">
     <div class="container p-3">
-      <div
-        class="d-flex justify-content-between"
-      >
+      <div class="d-flex justify-content-between">
         <div id="left-header">
           <h1 class="darkgreen">Inventory</h1>
 
@@ -34,8 +32,8 @@
           </div>
         </div>
         <div id="right-header">
-          <button @click="logout" id="btn-logout" class="btn btn-secondary m-3">
-            <i class="bi bi-box-arrow-right"></i>
+          <button @click="logout" id="btn-logout" class="btn m-3">
+            <i class="bi bi-box-arrow-right h1"></i>
           </button>
         </div>
       </div>
@@ -180,6 +178,6 @@ input::placeholder {
 }
 
 #btn-logout {
-  background-color: #f34d20;
+  border: none;
 }
 </style>
