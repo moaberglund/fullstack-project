@@ -672,7 +672,7 @@ export default defineEventHandler(async () => {
             shelf_id: 81899,
         },
         {
-            category: "Non-Alcoholic",
+            category: "Non-alcoholic",
             subcategory: "Wine",
             name: "Viva La Vida Sparkling",
             producer: "Viva Wines",
@@ -689,7 +689,7 @@ export default defineEventHandler(async () => {
             shelf_id: 4821
         },
         {
-            category: "Non-Alcoholic",
+            category: "Non-alcoholic",
             subcategory: "Beer",
             name: "HopAway IPA",
             producer: "Brewster Brewery",
@@ -706,7 +706,7 @@ export default defineEventHandler(async () => {
             shelf_id: 8317
         },
         {
-            category: "Non-Alcoholic",
+            category: "Non-alcoholic",
             subcategory: "Cider",
             name: "Golden Orchard Cider",
             producer: "Green Apple Cider Co.",
@@ -723,7 +723,7 @@ export default defineEventHandler(async () => {
             shelf_id: 4261
         },
         {
-            category: "Non-Alcoholic",
+            category: "Non-alcoholic",
             subcategory: "Mixed Drinks",
             name: "Tropical Breeze",
             producer: "TropiMix",
@@ -740,7 +740,7 @@ export default defineEventHandler(async () => {
             shelf_id: 7134
         },
         {
-            category: "Non-Alcoholic",
+            category: "Non-alcoholic",
             subcategory: "Spirits",
             name: "Zero Gin",
             producer: "Pure Spirit Distillery",
@@ -757,7 +757,7 @@ export default defineEventHandler(async () => {
             shelf_id: 1275
         },
         {
-            category: "Non-Alcoholic",
+            category: "Non-alcoholic",
             subcategory: "Wine",
             name: "Grape Garden Shiraz",
             producer: "Grape Garden Winery",
@@ -774,7 +774,7 @@ export default defineEventHandler(async () => {
             shelf_id: 4928
         },
         {
-            category: "Non-Alcoholic",
+            category: "Non-alcoholic",
             subcategory: "Beer",
             name: "Citrus Hops Lager",
             producer: "Summit Brewing",
@@ -791,7 +791,7 @@ export default defineEventHandler(async () => {
             shelf_id: 2854
         },
         {
-            category: "Non-Alcoholic",
+            category: "Non-alcoholic",
             subcategory: "Cider",
             name: "Apple Orchard Sparkler",
             producer: "Sparkling Orchard",
@@ -808,7 +808,7 @@ export default defineEventHandler(async () => {
             shelf_id: 6359
         },
         {
-            category: "Non-Alcoholic",
+            category: "Non-alcoholic",
             subcategory: "Mixed Drinks",
             name: "Berry Fusion",
             producer: "Fusion Beverages",
@@ -825,7 +825,7 @@ export default defineEventHandler(async () => {
             shelf_id: 2984
         },
         {
-            category: "Non-Alcoholic",
+            category: "Non-alcoholic",
             subcategory: "Spirits",
             name: "Mocktail Vodka",
             producer: "Mocktail Distillers",
