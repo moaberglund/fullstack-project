@@ -1,4 +1,5 @@
 <template>
+    <div class="body">
     <div v-if="isAuthenticated">
         <AppHeader />
         <NuxtPage />
@@ -8,6 +9,7 @@
     <div v-else>
         <p>Loading...</p>
     </div>
+</div>
 </template>
 
 <script setup>
@@ -30,4 +32,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.body {
+    margin-bottom: 110px;
+}
 </style>

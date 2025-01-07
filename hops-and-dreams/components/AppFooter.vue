@@ -46,6 +46,10 @@ export default {
 footer {
   height: 90px;
   border-radius: 25px 25px 0 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 9999;
 }
 #btn-home {
   border: none;
