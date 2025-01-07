@@ -106,13 +106,13 @@ API:t hanterar olika fel med standardiserade HTTP-statuskoder och meddelanden. H
 
 ### Autentisering
 
-API:t använder **JWT (JSON Web Tokens)** för att autentisera och skydda endpoints. Endast användare med en giltig token kan få åtkomst till skyddade resurser. 
+API:t använder **JWT (JSON Web Tokens)** för autentisering och middleware för att skydda rutter i applikationen. Detta säkerställer att endast autentiserade användare kan få åtkomst till skyddade resurser.
 
 #### **JWT-processen**
 1. **Login Endpoint**:  
    Vid inloggning (`POST /api/auth/login`) genereras en JWT-token om användarens inloggningsuppgifter är korrekta.  
-   - Tokenen innehåller användarens ID, användarnamn och roll, samt är signerad med en hemlig nyckel (`JWT_SECRET`).
-   - Tokenen är giltig i 12 timmar och skickas tillbaka till klienten i svaret:  
+   - Tokenen innehåller användarens ID, användarnamn och eventuell roll, samt är signerad med en hemlig nyckel (`JWT_SECRET`).
+   - Tokenen är giltig i 12 timmar och skickas tillbaka till klienten:  
      ```json
      {
        "success": true,
@@ -121,26 +121,43 @@ API:t använder **JWT (JSON Web Tokens)** för att autentisera och skydda endpoi
      }
      ```
 
-2. **Skyddade Endpoints**:  
-   För att komma åt skyddade endpoints måste klienten inkludera JWT-tokenen i `Authorization`-headern på alla förfrågningar:  
+2. **Lokal lagring av token**:  
+   Klienten sparar token i `localStorage` och inkluderar den i `Authorization`-headern för skyddade API-förfrågningar.  
+
+3. **Middleware för ruttskydd**:  
+   I frontend-applikationen används en middleware (`auth.js`) för att:  
+   - Kontrollera om en giltig token finns i `localStorage`.  
+   - Dekoda tokenen med hjälp av `jwt-decode` och verifiera dess giltighetstid.  
+   - Navigera användaren till `/login` om tokenen har gått ut, är ogiltig eller saknas.  
+
+   Exempel på middleware-logik:  
+   ```javascript
+   import * as jwtDecode from 'jwt-decode';
+
+   export default defineNuxtRouteMiddleware((to, from) => {
+       const token = localStorage.getItem('authToken');
+
+       if (token) {
+           try {
+               const decodedToken = jwtDecode(token);
+               const currentTime = Date.now() / 1000;
+
+               if (decodedToken.exp < currentTime) {
+                   localStorage.removeItem('authToken');
+                   return navigateTo('/login');
+               }
+           } catch (error) {
+               localStorage.removeItem('authToken');
+               return navigateTo('/login');
+           }
+       } else if (to.name !== 'login') {
+           return navigateTo('/login');
+       }
+   });
    ```
-   Authorization: Bearer <your-jwt-token>
-   ```
 
-#### **Exempel på Skyddad Förfrågan**
-**Endpoint**: `GET /api/beverages`  
-**Header**:  
-```http
-Authorization: Bearer <your-jwt-token>
-```
-Om tokenen är giltig returneras data. Vid ogiltig eller saknad token returneras ett `401 Unauthorized`-svar.
-
-#### **Rollbaserad åtkomst (RBAC)**
-API:t stödjer rollbaserad åtkomstkontroll baserat på `role`-fältet i användarmodellen. Exempel på roller kan inkludera:
-- **Admin**: Full åtkomst till alla endpoints (CRUD).
-- **User**: Begränsad åtkomst, t.ex. endast läsa resurser.
-
-> Rollkontroll kan implementeras i middleware för att validera användarens behörighet baserat på `role` i tokenen.
+4. **Skyddade Endpoints**:  
+   När en användare navigerar till en skyddad sida utan giltig token, omdirigeras de automatiskt till inloggningssidan.
 
 #### **Felhantering för Autentisering**
 - **Ogiltig token** (`401 Unauthorized`):  
@@ -164,9 +181,13 @@ API:t stödjer rollbaserad åtkomstkontroll baserat på `role`-fältet i använd
 ---
 
 ### Säkerhetsåtgärder
-- Lösenord hashas med **bcrypt** innan de sparas i databasen.
-- JWT-token signerad med en säker `JWT_SECRET`.
-- Tokenens giltighetstid är begränsad till 12 timmar.
-- Rollbaserad åtkomstkontroll möjliggör finjusterad säkerhet.
+- **Server-sidan**:  
+  - Lösenord hashas med **bcrypt** innan de sparas i databasen.
+  - JWT-token signerad med en säker `JWT_SECRET`.
+  - Tokenens giltighetstid är begränsad till 12 timmar.  
+
+- **Klient-sidan**:  
+  - Middleware validerar tokenens giltighet och skyddar skyddade rutter.
+  - Ogiltiga eller utgångna tokens tas bort automatiskt från `localStorage`.  
 
 ---
