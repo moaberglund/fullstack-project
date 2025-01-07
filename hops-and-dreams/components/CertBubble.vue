@@ -26,6 +26,7 @@ div {
   display: flex; 
   justify-content: center; 
   align-items: center; 
+  margin-right: 1em;
 }
 
 p {
