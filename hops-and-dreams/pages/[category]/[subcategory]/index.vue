@@ -7,39 +7,31 @@
       <div class="row"></div>
 
       <div class="row">
-        <div
-          class="col-6 col-md-4 col-lg-3 mt-3"
-          v-for="beverage in filteredBeverages"
-          :key="beverage._id"
-        >
-          <div class="card text-center p-3 shadow-sm">
-            <div
-              class="rounded mx-auto mb-3"
-              :style="{
+        <div class="col-6 col-md-4 col-lg-3 mt-3" v-for="beverage in filteredBeverages" :key="beverage._id">
+          <!-- Länk till den detaljerade sidan för drycken -->
+          <nuxt-link class="linkColor" :to="`/${category}/${subcategory}/${beverage._id}`">
+            <div class="card text-center p-3 shadow-sm">
+              <div class="rounded mx-auto mb-3" :style="{
                 width: '100px',
                 height: '100px',
                 backgroundColor:
                   beverage.category === 'Wine'
                     ? '#f8d7da'
                     : beverage.category === 'Beer'
-                    ? '#d4edda'
-                    : beverage.category === 'Cider'
-                    ? '#FAEDCB'
-                    : beverage.category === 'Mixed Drinks'
-                    ? '#D5C8E9'
-                    : beverage.category === 'Spirits'
-                    ? '#F8D9C4'
-                    : '#cce5ff',
-              }"
-            ></div>
-            <!-- Länk till den detaljerade sidan för drycken -->
-            <nuxt-link
-              class="linkColor"
-              :to="`/${category}/${subcategory}/${beverage._id}`"
-            >
-              {{ beverage.name }}
-            </nuxt-link>
-          </div>
+                      ? '#d4edda'
+                      : beverage.category === 'Cider'
+                        ? '#FAEDCB'
+                        : beverage.category === 'Mixed Drinks'
+                          ? '#D5C8E9'
+                          : beverage.category === 'Spirits'
+                            ? '#F8D9C4'
+                            : '#cce5ff',
+              }"></div>
+
+              <p>{{ beverage.name }}</p>
+
+            </div>
+          </nuxt-link>
         </div>
       </div>
     </div>

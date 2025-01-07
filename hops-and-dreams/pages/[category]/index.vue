@@ -12,6 +12,7 @@
           v-for="subcategory in uniqueSubcategories"
           :key="subcategory"
         >
+        <nuxt-link class="linkColor" :to="`/${category}/${subcategory}`">
           <div class="card text-center p-3 shadow-sm">
             <div
               class="rounded mx-auto mb-3"
@@ -33,10 +34,8 @@
               }"
             ></div>
             <!-- Länk till subkategori-sidan -->
-            <nuxt-link class="linkColor" :to="`/${category}/${subcategory}`">{{
-              subcategory
-            }}</nuxt-link>
-          </div>
+            <p>{{ subcategory }}</p>
+          </div></nuxt-link>
         </div>
       </div>
     </div>

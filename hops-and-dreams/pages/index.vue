@@ -5,28 +5,31 @@
       </div>
 
       <div class="row">
+
         <div class="col-6 col-md-4 col-lg-3 mt-3" v-for="category in uniqueCategories" :key="category">
-          <div class="card text-center p-2 shadow-sm">
-            <div class="rounded mx-auto mb-3" :style="{
-              width: '100px',
-              height: '100px',
-              backgroundColor:
-                category === 'Wine'
-                  ? '#f8d7da'
-                  : category === 'Beer'
-                    ? '#d4edda'
-                    : category === 'Cider'
-                      ? '#FAEDCB'
-                      : category === 'Mixed Drinks'
-                        ? '#D5C8E9'
-                        : category === 'Spirits'
-                          ? '#F8D9C4'
-                          : '#cce5ff',
-            }"></div>
-            <!-- Länk till den dynamiska sidan med kategori -->
-            <nuxt-link class="linkColor" :to="`/${category}`">{{ category }}</nuxt-link>
-          </div>
+          <nuxt-link class="linkColor" :to="`/${category}`">
+            <div class="card text-center p-2 shadow-sm">
+              <div class="rounded mx-auto mb-3" :style="{
+                width: '100px',
+                height: '100px',
+                backgroundColor:
+                  category === 'Wine'
+                    ? '#f8d7da'
+                    : category === 'Beer'
+                      ? '#d4edda'
+                      : category === 'Cider'
+                        ? '#FAEDCB'
+                        : category === 'Mixed Drinks'
+                          ? '#D5C8E9'
+                          : category === 'Spirits'
+                            ? '#F8D9C4'
+                            : '#cce5ff',
+              }"></div>
+              <p>{{ category }}</p>
+            </div>
+          </nuxt-link>
         </div>
+
       </div>
     </div>
   </section>
