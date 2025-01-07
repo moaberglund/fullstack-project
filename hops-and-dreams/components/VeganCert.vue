@@ -1,5 +1,5 @@
 <template>
-    <CertBubble cert="V" color="#2D8EBB" />
+    <CertBubble cert="Vegan" color="#2D8EBB" />
 
 </template>
 

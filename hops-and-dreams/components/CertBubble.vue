@@ -35,5 +35,6 @@ p {
   font-weight: 300;
   text-align: center;
   margin: 0;
+  font-size: 11px;
 }
 </style>
