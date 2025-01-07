@@ -244,7 +244,7 @@ export default defineEventHandler(async () => {
         },
         {
             category: "Beer",
-            subcategory: "Other Sour Beer",
+            subcategory: "Sour Beer",
             name: "Living Machines",
             producer: "Elmeleven",
             country: "Sweden",
