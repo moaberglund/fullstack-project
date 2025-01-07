@@ -1,6 +1,5 @@
 <template>
   <h1>Test page</h1>
-<EcoCert />
 
 
 </template>
