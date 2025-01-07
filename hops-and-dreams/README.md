@@ -191,3 +191,36 @@ API:t använder **JWT (JSON Web Tokens)** för autentisering och middleware för
   - Ogiltiga eller utgångna tokens tas bort automatiskt från `localStorage`.  
 
 ---
+
+## Front End - Projektstruktur och funktionalitet 
+
+### 1. Mappstrukturens funktionalitet
+
+- **components**: Återanvändbara Vue-komponenter som används på flera sidor, t.ex. `AppHeader.vue`, `AppFooter.vue`, `beverageBubble.vue`, `certBubble.vue`, `Breadcrumbs.vue` och `LoginForm.vue`.
+- **layouts**: Standardlayouter för sidor, t.ex. `default.vue` (för alla sidor utom inloggning) och `login.vue` (för inloggningssidan).
+- **pages**: Dynamiska rutter och sidinnehåll, t.ex. sidor för login, index, dryckernas subkategorier och specifika drycker.
+- **plugins**: Vue-plugins som används globalt, t.ex. FontAwesome för ikoner.
+- **assets/css**: Anpassade CSS-filer som `main.css` och `normalize.css` för global styling och överriding av stilar.
+
+### 2. Detaljer om styling
+
+- **Bootstrap**: Projektet använder Bootstrap för grundläggande styling och layout. [Bootstrap-dokumentationen](https://getbootstrap.com) kan användas för referens och ytterligare anpassning.
+- **main.css**: Denna fil innehåller globala stilar och används för eventuella overrides eller egna stilar. Stilar är också scopade till de enskilda `.vue`-filerna när det är relevant.
+
+### 3. Hantering av tillstånd
+
+- Projektet använder Vue:s inbyggda mekanismer för tillståndshantering. Det finns för närvarande ingen användning av externa bibliotek som Pinia eller Vuex.
+
+### 4. Autentisering och middleware
+
+- **Tokenhantering**: Efter lyckad inloggning sparas autentiseringstoken i `localStorage` för att användas vid följande API-förfrågningar.
+- **Middleware**: Middleware används för att skydda rutter och säkerställa att endast autentiserade användare kan få åtkomst till vissa sidor. Detta hanteras genom en `auth.js`-middleware som kontrollerar token och omdirigerar användare vid behov.
+
+### 5. Responsiv design
+
+- Projektet är designat för att vara responsivt, vilket innebär att sidorna fungerar både på mobila enheter och stationära enheter. Layouten använder sig av Bootstrap:s grid-system för att anpassa sig till olika skärmstorlekar.
+
+### 6. API-integration
+
+- **Backend-API**: Frontend-applikationen integreras med backend-API:t via `fetch`-förfrågningar för att hämta drycker och annan relevant data. API-förfrågningar görs från relevanta `.vue`-komponenter.
+- **Bas-URL**: Bas-URL för API:t och andra miljövariabler som `MONGODB_URI` och `JWT_SECRET` definieras i `.env`-filen.
