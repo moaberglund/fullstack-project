@@ -653,7 +653,25 @@ export default defineEventHandler(async () => {
             vegan: true,
             shelf_amount: 100,
             shelf_id: 88
+        },
+        {
+            category: "Spirits",
+            subcategory: "Vodka",
+            name: "Grey Goose Vodka",
+            producer: "Grey Goose", 
+            country: "France",
+            region: "Normandie", 
+            year: 2024, 
+            volume: 700,
+            alcohol_by_volume: 40,
+            price: 54.9,
+            description: "Clean taste with hints of citrus and herbs. Used as a cocktail ingredient.",
+            organic: false, 
+            vegan: false, 
+            shelf_amount: 78,
+            shelf_id: 81899,
         }
+        
         // Add more posts
     ];
 
