@@ -7,7 +7,7 @@
         <i class="bi bi-house-door-fill h1"></i>
       </button>
       <button @click="back" id="btn-back" class="btn m-3">
-        <i class="bi bi-backspace-fill h1"></i>
+        <i class="bi bi-arrow-left h1"></i>
       </button>
     </div>
   </footer>
