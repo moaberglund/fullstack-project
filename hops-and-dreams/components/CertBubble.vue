@@ -19,15 +19,20 @@ export default {
 
 <style scoped>
 div {
-  width: 35px;
-  height: 35px;
+  width: 45px;
+  height: 45px;
   background-color: #0dbd33;
   border-radius: 50%;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
 }
 
 p {
   color: white;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 300;
+  text-align: center;
+  margin: 0;
 }
 </style>
