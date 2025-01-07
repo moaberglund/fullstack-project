@@ -113,26 +113,26 @@ API:t använder **JWT (JSON Web Tokens)** för att autentisera och skydda endpoi
    Vid inloggning (`POST /api/auth/login`) genereras en JWT-token om användarens inloggningsuppgifter är korrekta.  
    - Tokenen innehåller användarens ID, användarnamn och roll, samt är signerad med en hemlig nyckel (`JWT_SECRET`).
    - Tokenen är giltig i 12 timmar och skickas tillbaka till klienten i svaret:  
-     '''json
+     ***json
      {
        "success": true,
        "message": "Login successful",
        "token": "<your-jwt-token>"
      }
-     '''
+     ***
 
 2. **Skyddade Endpoints**:  
    För att komma åt skyddade endpoints måste klienten inkludera JWT-tokenen i `Authorization`-headern på alla förfrågningar:  
-   '''
+   ***
    Authorization: Bearer <your-jwt-token>
-   '''
+   ***
 
 #### **Exempel på Skyddad Förfrågan**
 **Endpoint**: `GET /api/beverages`  
 **Header**:  
-'''http
+***http
 Authorization: Bearer <your-jwt-token>
-'''
+***
 Om tokenen är giltig returneras data. Vid ogiltig eller saknad token returneras ett `401 Unauthorized`-svar.
 
 #### **Rollbaserad åtkomst (RBAC)**
@@ -145,21 +145,21 @@ API:t stödjer rollbaserad åtkomstkontroll baserat på `role`-fältet i använd
 #### **Felhantering för Autentisering**
 - **Ogiltig token** (`401 Unauthorized`):  
   Om en token är ogiltig eller har gått ut:  
-  '''json
+  ***json
   {
     "success": false,
     "message": "Invalid or expired token"
   }
-  '''
+  ***
 
 - **Ingen token** (`401 Unauthorized`):  
   Om en token saknas i förfrågan:  
-  '''json
+  ***json
   {
     "success": false,
     "message": "Token is required"
   }
-  '''
+  ***
 
 ---
 
