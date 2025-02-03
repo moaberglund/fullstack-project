@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   //Bootstrap
   app: {
     head: {
+      title: 'Hops and Dreams',
       link: [
         {
           rel: 'stylesheet',
