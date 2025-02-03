@@ -1,5 +1,6 @@
 <template>
   <form @submit.prevent="submitForm">
+    <h1>Add new beverage:</h1>
     <label for="category">Category:</label>
     <select id="category" v-model="beverage.category">
       <option value="" disabled>Select a category</option>
@@ -94,7 +95,7 @@
     <label for="shelf_id">Shelf ID:</label>
     <input type="number" id="shelf_id" v-model="beverage.shelf_id" required />
 
-    <button type="submit">Save</button>
+    <button type="submit">Save beverage</button>
   </form>
 </template>
   
@@ -157,9 +158,12 @@ const submitForm = async () => {
 
 <style scoped>
 form {
+  background: #F4F4F4;
   width: 600px;
   max-width: 100%;
-  margin: 0 auto;
+  margin: 1em auto;
+  padding: 1em;
+  border-radius: 15px;
   line-height: 1.5em;
   display: flex;
   flex-direction: column;
@@ -179,7 +183,7 @@ select {
   border-radius: 25px;
   width: 400px;
   max-width: 90%;
-  background-color: #ededed;
+  background-color: #ffffff;
   border: none;
 }
 input {
@@ -188,7 +192,7 @@ input {
   border-radius: 25px;
   width: 400px;
   max-width: 90%;
-  background-color: #ededed;
+  background-color: #ffffff;
   border: none;
 }
 
@@ -199,7 +203,7 @@ textarea {
   width: 400px;
   height: 125px;
   max-width: 90%;
-  background-color: #ededed;
+  background-color: #ffffff;
 }
 
 .checkbox-group {
@@ -214,12 +218,14 @@ textarea {
 }
 
 button {
-  margin: 1em 0;
+  margin: 2em 0 3em 0;
   padding: 1em;
-  border-radius: 25px;
+  border-radius: 15px;
   background-color: #26453e;
-  color: #e4ba78;
+  color: #ffffff;
+  border: none;
   width: 200px;
+  font-size: 20px;
   cursor: pointer;
 }
 
