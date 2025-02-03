@@ -341,6 +341,7 @@ form {
 label {
   font-size: 16px;
   margin-top: 2em;
+  color: #5A5A5A;
 }
 
 h2 {
