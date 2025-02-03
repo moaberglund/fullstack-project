@@ -142,7 +142,7 @@ const filteredSubcategories = computed(() => {
 // Funktion som hanterar formulärets inskick
 const submitForm = async () => {
   try {
-    const response = await $fetch("/api/create", {
+    const response = await $fetch("/api/beverages/create", {
       method: "POST",
       body: beverage.value, // Skickar hela objektet direkt
     });
