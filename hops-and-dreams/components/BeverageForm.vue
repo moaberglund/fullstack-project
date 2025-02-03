@@ -96,6 +96,17 @@
     <input type="number" id="shelf_id" v-model="beverage.shelf_id" required />
 
     <button type="submit">Save beverage</button>
+
+    <!-- Bekräftelsemeddelande -->
+    <div
+      v-if="saveMessage"
+      :class="{
+        'success-message': saveMessage.includes('success'),
+        'error-message': saveMessage.includes('error'),
+      }"
+    >
+      {{ saveMessage }}
+    </div>
   </form>
 </template>
   
@@ -147,11 +158,21 @@ const submitForm = async () => {
       body: beverage.value, // Skickar hela objektet direkt
     });
 
-    alert("Beverage saved successfully!");
+    saveMessage.value = "Beverage saved successfully!";
     resetForm();
+
+    // Ta bort meddelandet efter 3 sekunder
+    setTimeout(() => {
+      saveMessage.value = "";
+    }, 3000);
   } catch (error) {
     console.error("Error:", error);
-    alert("An error occurred while saving the beverage.");
+    saveMessage.value = "An error occurred while saving the beverage.";
+
+    // Ta bort meddelandet efter 3 sekunder
+    setTimeout(() => {
+      saveMessage.value = "";
+    }, 3000);
   }
 };
 
@@ -172,15 +193,17 @@ const resetForm = () => {
     organic: false,
     vegan: false,
     shelf_amount: null,
-    shelf_id: null
+    shelf_id: null,
   };
 };
 
+// State för bekräftelsemeddelande
+const saveMessage = ref("");
 </script>
 
 <style scoped>
 form {
-  background: #F4F4F4;
+  background: #f4f4f4;
   width: 600px;
   max-width: 100%;
   margin: 1em auto;
@@ -244,29 +267,29 @@ textarea {
 }
 
 .checkbox-item input[type="checkbox"] {
- width: auto;
- margin: 0;
- border-radius: 50%;
- appearance: none;
- width: 16px;
- height: 16px;
- border: 2px solid #26453e;
- cursor: pointer;
+  width: auto;
+  margin: 0;
+  border-radius: 50%;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #26453e;
+  cursor: pointer;
 }
 
 .checkbox-item input[type="checkbox"]:checked {
- background-color: #26453e;
- position: relative;
+  background-color: #26453e;
+  position: relative;
 }
 
 .checkbox-item input[type="checkbox"]:checked::after {
- content: "✓";
- color: white;
- position: absolute;
- left: 50%;
- top: 50%;
- transform: translate(-50%, -50%);
- font-size: 12px;
+  content: "✓";
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
 }
 .checkbox-item label {
   margin: 0;
@@ -289,4 +312,24 @@ button:hover {
   color: #26453e;
   box-shadow: 1px 1px 5px black;
 }
+
+/** Meddelande div */
+.success-message {
+  background-color: #4CAF50; /* Grön för framgång */
+  color: white;
+  padding: 1em;
+  margin-bottom: 1em;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.error-message {
+  background-color: #f44336; /* Röd för fel */
+  color: white;
+  padding: 1em;
+  margin-bottom: 1em;
+  text-align: center;
+  border-radius: 5px;
+}
+
 </style>
