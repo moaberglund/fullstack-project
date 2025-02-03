@@ -205,16 +205,49 @@ textarea {
   max-width: 90%;
   background-color: #ffffff;
 }
+.certifications {
+  margin-bottom: 2em;
+}
 
 .checkbox-group {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; /* Gör så att de kan brytas till nästa rad om nödvändigt */
+  flex-direction: column;
+  gap: 1em;
 }
 
 .checkbox-item {
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.checkbox-item input[type="checkbox"] {
+ width: auto;
+ margin: 0;
+ border-radius: 50%;
+ appearance: none;
+ width: 16px;
+ height: 16px;
+ border: 2px solid #26453e;
+ cursor: pointer;
+}
+
+.checkbox-item input[type="checkbox"]:checked {
+ background-color: #26453e;
+ position: relative;
+}
+
+.checkbox-item input[type="checkbox"]:checked::after {
+ content: "✓";
+ color: white;
+ position: absolute;
+ left: 50%;
+ top: 50%;
+ transform: translate(-50%, -50%);
+ font-size: 12px;
+}
+.checkbox-item label {
+  margin: 0;
 }
 
 button {
