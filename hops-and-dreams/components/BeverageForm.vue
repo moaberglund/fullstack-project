@@ -1,6 +1,6 @@
 <template>
-
   <form @submit.prevent="submitForm">
+    <h1>Add new beverage:</h1>
     <label for="category">Category:</label>
     <select id="category" v-model="beverage.category">
       <option value="" disabled>Select a category</option>
@@ -44,27 +44,58 @@
     <input type="number" id="volume" v-model="beverage.volume" required />
 
     <label for="alcohol_by_volume">Alcohol by Volume (%):</label>
-    <input type="number" id="alcohol_by_volume" v-model="beverage.alcohol_by_volume" required step="0.1" />
+    <input
+      type="number"
+      id="alcohol_by_volume"
+      v-model="beverage.alcohol_by_volume"
+      required
+      step="0.1"
+    />
 
     <label for="price">Price (€):</label>
-    <input type="number" id="price" v-model="beverage.price" required step="0.01" />
+    <input
+      type="number"
+      id="price"
+      v-model="beverage.price"
+      required
+      step="0.01"
+    />
 
     <label for="description">Description:</label>
-    <textarea id="description" v-model="beverage.description" required></textarea>
+    <textarea
+      id="description"
+      v-model="beverage.description"
+      required
+    ></textarea>
 
-    <label for="organic">Organic:</label>
-    <input type="checkbox" id="organic" v-model="beverage.organic" />
+    <div class="certifications">
+      <h2>Certifications:</h2>
 
-    <label for="vegan">Vegan:</label>
-    <input type="checkbox" id="vegan" v-model="beverage.vegan" />
+      <div class="checkbox-group">
+        <div class="checkbox-item">
+          <input type="checkbox" id="organic" v-model="beverage.organic" />
+          <label for="organic">Organic</label>
+        </div>
+
+        <div class="checkbox-item">
+          <input type="checkbox" id="vegan" v-model="beverage.vegan" />
+          <label for="vegan">Vegan</label>
+        </div>
+      </div>
+    </div>
 
     <label for="shelf_amount">Shelf Amount:</label>
-    <input type="number" id="shelf_amount" v-model="beverage.shelf_amount" required />
+    <input
+      type="number"
+      id="shelf_amount"
+      v-model="beverage.shelf_amount"
+      required
+    />
 
     <label for="shelf_id">Shelf ID:</label>
     <input type="number" id="shelf_id" v-model="beverage.shelf_id" required />
 
-    <button type="submit">Save</button>
+    <button type="submit">Save beverage</button>
   </form>
 </template>
   
@@ -124,3 +155,116 @@ const submitForm = async () => {
   }
 };
 </script>
+
+<style scoped>
+form {
+  background: #F4F4F4;
+  width: 600px;
+  max-width: 100%;
+  margin: 1em auto;
+  padding: 1em;
+  border-radius: 15px;
+  line-height: 1.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 16px;
+}
+
+h2 {
+  font-size: 16px;
+}
+
+select {
+  padding: 0.5em 1em;
+  margin: 0 0 2em 0;
+  border-radius: 25px;
+  width: 400px;
+  max-width: 90%;
+  background-color: #ffffff;
+  border: none;
+}
+input {
+  padding: 0.5em 0 0.5em 1em;
+  margin: 0 0 2em 0;
+  border-radius: 25px;
+  width: 400px;
+  max-width: 90%;
+  background-color: #ffffff;
+  border: none;
+}
+
+textarea {
+  padding: 0.5em 0 0.5em 1em;
+  margin: 0 0 2em 0;
+  border-radius: 25px;
+  width: 400px;
+  height: 125px;
+  max-width: 90%;
+  background-color: #ffffff;
+}
+.certifications {
+  margin-bottom: 2em;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.checkbox-item input[type="checkbox"] {
+ width: auto;
+ margin: 0;
+ border-radius: 50%;
+ appearance: none;
+ width: 16px;
+ height: 16px;
+ border: 2px solid #26453e;
+ cursor: pointer;
+}
+
+.checkbox-item input[type="checkbox"]:checked {
+ background-color: #26453e;
+ position: relative;
+}
+
+.checkbox-item input[type="checkbox"]:checked::after {
+ content: "✓";
+ color: white;
+ position: absolute;
+ left: 50%;
+ top: 50%;
+ transform: translate(-50%, -50%);
+ font-size: 12px;
+}
+.checkbox-item label {
+  margin: 0;
+}
+
+button {
+  margin: 2em 0 3em 0;
+  padding: 1em;
+  border-radius: 15px;
+  background-color: #26453e;
+  color: #ffffff;
+  border: none;
+  width: 200px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e4ba78;
+  color: #26453e;
+  box-shadow: 1px 1px 5px black;
+}
+</style>
