@@ -215,12 +215,13 @@ h3 {
   background-color: rgb(211, 211, 211);
 }
 
-/* Stil för modalen */
+/* Stil för modalerna */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
