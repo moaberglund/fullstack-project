@@ -1,5 +1,4 @@
 <template>
-
   <form @submit.prevent="submitForm">
     <label for="category">Category:</label>
     <select id="category" v-model="beverage.category">
@@ -44,22 +43,53 @@
     <input type="number" id="volume" v-model="beverage.volume" required />
 
     <label for="alcohol_by_volume">Alcohol by Volume (%):</label>
-    <input type="number" id="alcohol_by_volume" v-model="beverage.alcohol_by_volume" required step="0.1" />
+    <input
+      type="number"
+      id="alcohol_by_volume"
+      v-model="beverage.alcohol_by_volume"
+      required
+      step="0.1"
+    />
 
     <label for="price">Price (€):</label>
-    <input type="number" id="price" v-model="beverage.price" required step="0.01" />
+    <input
+      type="number"
+      id="price"
+      v-model="beverage.price"
+      required
+      step="0.01"
+    />
 
     <label for="description">Description:</label>
-    <textarea id="description" v-model="beverage.description" required></textarea>
+    <textarea
+      id="description"
+      v-model="beverage.description"
+      required
+    ></textarea>
 
-    <label for="organic">Organic:</label>
-    <input type="checkbox" id="organic" v-model="beverage.organic" />
+    <div class="certifications">
+      <h2>Certifications:</h2>
 
-    <label for="vegan">Vegan:</label>
-    <input type="checkbox" id="vegan" v-model="beverage.vegan" />
+      <div class="checkbox-group">
+        <div class="checkbox-item">
+          <input type="checkbox" id="organic" v-model="beverage.organic" />
+          <label for="organic">Organic</label>
+        </div>
+
+        <div class="checkbox-item">
+          <input type="checkbox" id="vegan" v-model="beverage.vegan" />
+          <label for="vegan">Vegan</label>
+        </div>
+      </div>
+    </div>
 
     <label for="shelf_amount">Shelf Amount:</label>
-    <input type="number" id="shelf_amount" v-model="beverage.shelf_amount" required />
+    <input
+      type="number"
+      id="shelf_amount"
+      v-model="beverage.shelf_amount"
+      required
+    />
 
     <label for="shelf_id">Shelf ID:</label>
     <input type="number" id="shelf_id" v-model="beverage.shelf_id" required />
@@ -124,3 +154,78 @@ const submitForm = async () => {
   }
 };
 </script>
+
+<style scoped>
+form {
+  width: 600px;
+  max-width: 100%;
+  margin: 0 auto;
+  line-height: 1.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 16px;
+}
+
+h2 {
+  font-size: 16px;
+}
+
+select {
+  padding: 0.5em 1em;
+  margin: 0 0 2em 0;
+  border-radius: 25px;
+  width: 400px;
+  max-width: 90%;
+  background-color: #ededed;
+  border: none;
+}
+input {
+  padding: 0.5em 0 0.5em 1em;
+  margin: 0 0 2em 0;
+  border-radius: 25px;
+  width: 400px;
+  max-width: 90%;
+  background-color: #ededed;
+  border: none;
+}
+
+textarea {
+  padding: 0.5em 0 0.5em 1em;
+  margin: 0 0 2em 0;
+  border-radius: 25px;
+  width: 400px;
+  height: 125px;
+  max-width: 90%;
+  background-color: #ededed;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* Gör så att de kan brytas till nästa rad om nödvändigt */
+}
+
+.checkbox-item {
+  display: flex;
+  flex-direction: row;
+}
+
+button {
+  margin: 1em 0;
+  padding: 1em;
+  border-radius: 25px;
+  background-color: #26453e;
+  color: #e4ba78;
+  width: 200px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e4ba78;
+  color: #26453e;
+  box-shadow: 1px 1px 5px black;
+}
+</style>
