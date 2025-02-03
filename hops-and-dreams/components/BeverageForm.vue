@@ -148,12 +148,34 @@ const submitForm = async () => {
     });
 
     alert("Beverage saved successfully!");
-    console.log(response);
+    resetForm();
   } catch (error) {
     console.error("Error:", error);
     alert("An error occurred while saving the beverage.");
   }
 };
+
+// För att nollställa formulärdata efter inskick
+const resetForm = () => {
+  beverage.value = {
+    category: "",
+    subcategory: "",
+    name: "",
+    producer: "",
+    country: "",
+    region: "",
+    year: null,
+    volume: null,
+    alcohol_by_volume: null,
+    price: null,
+    description: "",
+    organic: false,
+    vegan: false,
+    shelf_amount: null,
+    shelf_id: null
+  };
+};
+
 </script>
 
 <style scoped>
