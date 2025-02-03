@@ -346,6 +346,7 @@ label {
 
 h2 {
   font-size: 16px;
+  color: #5A5A5A;
 }
 
 select {
