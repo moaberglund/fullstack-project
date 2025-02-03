@@ -6,6 +6,11 @@
       <button @click="home" id="btn-home" class="btn m-3">
         <i class="bi bi-house-door-fill h1"></i>
       </button>
+
+      <button @click="addBeverage" id="btn-add" class="btn m-3">
+        <i class="bi bi-plus-lg h1"></i>
+      </button>
+
       <button @click="back" id="btn-back" class="btn m-3">
         <i class="bi bi-arrow-left h1"></i>
       </button>
@@ -37,6 +42,10 @@ export default {
         // Om vi är på startsidan, gå tillbaka till startsidan
         this.$router.push("/");
       }
+    },
+    addBeverage() {
+      // Navigera till formulärsidan för att lägga till en ny dryck
+      this.$router.push("/add-beverage");
     },
   },
 };
